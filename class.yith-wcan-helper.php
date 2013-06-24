@@ -26,6 +26,8 @@ if( !class_exists( 'YITH_WCAN_Helper' ) ) {
         public static function attribute_taxonomies() {
             global $woocommerce;
 
+            if ( ! isset( $woocommerce ) ) return array();
+
             $attributes = array();
             $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
 
