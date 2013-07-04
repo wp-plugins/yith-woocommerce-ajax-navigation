@@ -15,6 +15,10 @@ YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop p
 
 YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page. The plugin also includes two new types of Product Attributes visualizations: Color and Label.
 With Color display type you're able to assign a color (selected from a Color Picker) to each Product Attributes. With Label Color display you're able to assign a label (3 chars max) to your Product Attributes.
+
+Working demos are available here:
+**[LIVE DEMO 1](http://demo.yithemes.com/room09/shop/)** - **[LIVE DEMO 2](http://demo.yithemes.com/bazar/shop/)**
+
 Full documentation is available [here](http://yithemes.com/docs-plugins/yith_ajax_navigation/).
 
 
