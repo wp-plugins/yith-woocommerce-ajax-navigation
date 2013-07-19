@@ -3,7 +3,7 @@
  * Plugin Name: YITH WooCommerce Ajax Navigation
  * Plugin URI: http://yithemes.com/
  * Description: YITH WooCommerce Ajax Navigation allows user to filter products in Shop page without reloading the page.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Your Inspiration Themes
  * Author URI: http://yithemes.com/
  * Text Domain: yit
@@ -11,7 +11,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.0.0
+ * @version 1.1.0
  */
 /*  Copyright 2013  Your Inspiration Themes  (email : plugins@yithemes.com)
 
@@ -36,22 +36,29 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 if( !defined('YITH_FUNCTIONS') ) {
     require_once( 'yit-common/yit-functions.php' );
 }
-if ( ! yit_is_woocommerce_active() ) return;
 
-load_plugin_textdomain( 'yit', false, dirname( plugin_basename( __FILE__ ) ). '/languages/' );
+function yith_wcan_constructor() {
+    global $woocommerce;
+    if ( ! isset( $woocommerce ) ) return;
 
-define( 'YITH_WCAN', true );
-define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
-define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
+    load_plugin_textdomain( 'yit', false, dirname( plugin_basename( __FILE__ ) ). '/languages/' );
 
-// Load required classes and functions
-require_once('functions.yith-wcan.php');
-require_once('class.yith-wcan-admin.php');
-require_once('class.yith-wcan-frontend.php');
-require_once('class.yith-wcan-helper.php');
-require_once('widgets/class.yith-wcan-navigation-widget.php');
-require_once('class.yith-wcan.php');
+    define( 'YITH_WCAN', true );
+    define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
+    define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
+    define( 'YITH_WCAN_VERSION', '1.1.0' );
 
-// Let's start the game!
-global $yith_wcan;
-$yith_wcan = new YITH_WCAN();
+    // Load required classes and functions
+    require_once('functions.yith-wcan.php');
+    require_once('class.yith-wcan-admin.php');
+    require_once('class.yith-wcan-frontend.php');
+    require_once('class.yith-wcan-helper.php');
+    require_once('widgets/class.yith-wcan-navigation-widget.php');
+    require_once('widgets/class.yith-wcan-reset-navigation-widget.php');
+    require_once('class.yith-wcan.php');
+
+    // Let's start the game!
+    global $yith_wcan;
+    $yith_wcan = new YITH_WCAN();
+}
+add_action( 'plugins_loaded', 'yith_wcan_constructor' );
