@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -72,7 +72,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
          */
         public function registerWidgets() {
             register_widget( 'YITH_WCAN_Navigation_Widget' );
-
+            register_widget( 'YITH_WCAN_Reset_Navigation_Widget' );
         }
 
     }

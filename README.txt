@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation
 Requires at least: 3.5.1
 Tested up to: 3.5.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,10 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 3. The final result
 
 == Changelog ==
+
+= 1.1.0 =
+
+* Added new widget YITH WooCommerce Ajax Reset Navigation
 
 = 1.0.0 =
 

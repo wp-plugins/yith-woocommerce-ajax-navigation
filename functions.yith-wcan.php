@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -97,5 +97,28 @@ function yith_wcan_can_be_displayed() {
         return true;
     } else {
         return false;
+    }
+}
+
+
+if( !function_exists('yit_curPageURL') ) {
+    /**
+     * Retrieve the current complete url
+     *
+     * @since 1.0
+     */
+    function yit_curPageURL() {
+        $pageURL = 'http';
+        if ( isset( $_SERVER["HTTPS"] ) AND $_SERVER["HTTPS"] == "on" )
+            $pageURL .= "s";
+
+        $pageURL .= "://";
+
+        if ( isset( $_SERVER["SERVER_PORT"] ) AND $_SERVER["SERVER_PORT"] != "80" )
+            $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+        else
+            $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+
+        return $pageURL;
     }
 }
