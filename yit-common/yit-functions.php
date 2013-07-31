@@ -110,7 +110,7 @@ if( ! function_exists('yit_get_options_from_prefix') ) {
             $return[$option] = get_option( $option );
         }
 
-        return yit_debug($return);
+        return $return;
     }
 }
 
