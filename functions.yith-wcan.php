@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -64,7 +64,7 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
             $return = sprintf('<table><tr><th>%s</th><th>%s</th></tr>', __('Term', 'yit'), __('Labels', 'yit'));
 
             foreach( $terms as $term ) {
-                $return .= "<tr><td><label for='{$id}{$term->term_id}'>{$term->name}</label></td><td><input type='text' id='{$id}{$term->term_id}' name='{$name}[labels][{$term->term_id}]' value='" . (isset( $values[$term->term_id] ) ? $values[$term->term_id] : '') . "' size='3' maxlength='3' /></td></tr>";
+                $return .= "<tr><td><label for='{$id}{$term->term_id}'>{$term->name}</label></td><td><input type='text' id='{$id}{$term->term_id}' name='{$name}[labels][{$term->term_id}]' value='" . (isset( $values[$term->term_id] ) ? $values[$term->term_id] : '') . "' size='3' /></td></tr>";
             }
 
             $return .= '</table>';
