@@ -3,7 +3,7 @@
  * Plugin Name: YITH WooCommerce Ajax Navigation
  * Plugin URI: http://yithemes.com/
  * Description: YITH WooCommerce Ajax Navigation allows user to filter products in Shop page without reloading the page.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Your Inspiration Themes
  * Author URI: http://yithemes.com/
  * Text Domain: yit
@@ -11,7 +11,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.1
+ * @version 1.1.2
  */
 /*  Copyright 2013  Your Inspiration Themes  (email : plugins@yithemes.com)
 

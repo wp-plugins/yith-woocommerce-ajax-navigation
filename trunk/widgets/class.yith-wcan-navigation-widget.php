@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -330,7 +330,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                         echo '<li ' . $class . '>';
 
-                        echo ( $count > 0 || $option_is_set ) ? '<a style="background-color:' . $instance['colors'][$term->term_id] . ';" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '">' : '<span style="background-color:' . $instance['colors'][$term->term_id] . ';" >';
+                        echo ( $count > 0 || $option_is_set ) ? '<a style="background-color:' . $instance['colors'][$term->term_id] . ';" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '" title="' . $term->name . '" >' : '<span style="background-color:' . $instance['colors'][$term->term_id] . ';" >';
 
                         echo $term->name;
 
