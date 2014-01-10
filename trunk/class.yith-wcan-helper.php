@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.2
+ * @version 1.2.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -29,11 +29,24 @@ if( !class_exists( 'YITH_WCAN_Helper' ) ) {
             if ( ! isset( $woocommerce ) ) return array();
 
             $attributes = array();
-            $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
+            if ( function_exists( 'wc_get_attribute_taxonomies' ) ) {
+                $attribute_taxonomies = wc_get_attribute_taxonomies();
+            } else {
+                $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
+            }
 
             if( empty( $attribute_taxonomies ) ) return array();
             foreach( $attribute_taxonomies as $attribute ) {
-                if ( taxonomy_exists( $woocommerce->attribute_taxonomy_name( $attribute->attribute_name ) ) ) {
+
+                /* FIX TO WOOCOMMERCE 2.1 */
+                if ( function_exists( 'wc_attribute_taxonomy_name' ) ) {
+                    $taxonomy = wc_attribute_taxonomy_name($attribute->attribute_name);
+                } else {
+                    $taxonomy = $woocommerce->attribute_taxonomy_name( $attribute->attribute_name );
+                }
+
+
+                if ( taxonomy_exists( $taxonomy ) ) {
                     $attributes[] = $attribute->attribute_name;
                 }
             }

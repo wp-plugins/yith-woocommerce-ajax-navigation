@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Navigation v1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-19 09:29+0100\n"
-"PO-Revision-Date: 2013-07-19 09:30+0100\n"
+"POT-Creation-Date: 2014-01-10 10:28+0100\n"
+"PO-Revision-Date: 2014-01-10 10:30+0100\n"
 "Last-Translator: Your Inspiration Themes <plugins@yithemes.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -26,7 +26,7 @@ msgstr "Proprietà"
 
 # @ yit
 #: functions.yith-wcan.php:52
-#: widgets/class.yith-wcan-navigation-widget.php:535
+#: widgets/class.yith-wcan-navigation-widget.php:695
 msgid "Color"
 msgstr "Colore"
 
@@ -45,46 +45,54 @@ msgstr "Filtra la lista dei prodotti senza ricaricare la pagina"
 msgid "YITH WooCommerce Ajax Navigation"
 msgstr "YITH WooCommerce Ajax Navigation"
 
+#: widgets/class.yith-wcan-navigation-widget.php:215
+msgid "Filters List:"
+msgstr "Lista Filtri:"
+
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:516
+#: widgets/class.yith-wcan-navigation-widget.php:676
 #: widgets/class.yith-wcan-reset-navigation-widget.php:85
 msgid "Title"
 msgstr "Titolo"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:521
+#: widgets/class.yith-wcan-navigation-widget.php:681
 msgid "Attribute:"
 msgstr "Attributo:"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:526
+#: widgets/class.yith-wcan-navigation-widget.php:686
 msgid "Query Type:"
 msgstr "Tipo Query:"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:528
+#: widgets/class.yith-wcan-navigation-widget.php:688
 msgid "AND"
 msgstr "AND"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:529
+#: widgets/class.yith-wcan-navigation-widget.php:689
 msgid "OR"
 msgstr "OR"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:532
+#: widgets/class.yith-wcan-navigation-widget.php:692
 msgid "Type:"
 msgstr "Tipo:"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:534
+#: widgets/class.yith-wcan-navigation-widget.php:694
 msgid "List"
 msgstr "Lista"
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:536
+#: widgets/class.yith-wcan-navigation-widget.php:696
 msgid "Label"
 msgstr "Label"
+
+#: widgets/class.yith-wcan-navigation-widget.php:697
+msgid "Dropdown"
+msgstr "Dropdown"
 
 # @ yit
 #: widgets/class.yith-wcan-reset-navigation-widget.php:21
@@ -105,76 +113,76 @@ msgid "Button Label"
 msgstr "Label Pulsante"
 
 # @ yit
-#: yit-common/yith-panel.php:396
+#: yit-common/yith-panel.php:406
 msgid "Select a date"
 msgstr "Seleziona una data"
 
 # @ yit
-#: yit-common/yith-panel.php:397
+#: yit-common/yith-panel.php:407
 msgid "Hours"
 msgstr "Ore"
 
 # @ yit
-#: yit-common/yith-panel.php:398 yit-common/yith-panel.php:399
+#: yit-common/yith-panel.php:408 yit-common/yith-panel.php:409
 msgid "Minutes"
 msgstr "Minuti"
 
 # @ yit
-#: yit-common/yith-panel.php:407
+#: yit-common/yith-panel.php:417
 msgid "Upload"
 msgstr "Upload"
 
 # @ yit
-#: yit-common/yith-panel.php:434
+#: yit-common/yith-panel.php:444
 msgid "px"
 msgstr "px"
 
 # @ yit
-#: yit-common/yith-panel.php:435
+#: yit-common/yith-panel.php:445
 msgid "em"
 msgstr "em"
 
 # @ yit
-#: yit-common/yith-panel.php:436
+#: yit-common/yith-panel.php:446
 msgid "pt"
 msgstr "pt"
 
 # @ yit
-#: yit-common/yith-panel.php:437
+#: yit-common/yith-panel.php:447
 msgid "rem"
 msgstr "rem"
 
 # @ yit
-#: yit-common/yith-panel.php:447
+#: yit-common/yith-panel.php:457
 msgid "Select a font family"
 msgstr "Seleziona un font"
 
 # @ yit
-#: yit-common/yith-panel.php:455
+#: yit-common/yith-panel.php:465
 msgid "Regular"
 msgstr "Regular"
 
 # @ yit
-#: yit-common/yith-panel.php:456
+#: yit-common/yith-panel.php:466
 msgid "Bold"
 msgstr "Bold"
 
 # @ yit
-#: yit-common/yith-panel.php:457
+#: yit-common/yith-panel.php:467
 msgid "Extra bold"
 msgstr "Extra bold"
 
 # @ yit
-#: yit-common/yith-panel.php:458
+#: yit-common/yith-panel.php:468
 msgid "Italic"
 msgstr "Italic"
 
 # @ yit
-#: yit-common/yith-panel.php:459
+#: yit-common/yith-panel.php:469
 msgid "Italic bold"
 msgstr "Italic bold"
 
 # @ yit
-#: yit-common/yith-panel.php:471
+#: yit-common/yith-panel.php:481
 msgid "Click to preview"
 msgstr "Clicca per anteprima"

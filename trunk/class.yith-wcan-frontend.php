@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.2
+ * @version 1.2.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -96,12 +96,26 @@ if( !class_exists( 'YITH_WCAN_Frontend' ) ) {
 
                 $_chosen_attributes = $_attributes_array = array();
 
-                $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
+                /* FIX TO WOOCOMMERCE 2.1 */
+                if( function_exists( 'wc_get_attribute_taxonomies' ) ){
+                    $attribute_taxonomies = wc_get_attribute_taxonomies();
+                } else {
+                    $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
+                }
+
+
                 if ( $attribute_taxonomies ) {
                     foreach ( $attribute_taxonomies as $tax ) {
 
                         $attribute = sanitize_title( $tax->attribute_name );
-                        $taxonomy = $woocommerce->attribute_taxonomy_name( $attribute );
+
+                        /* FIX TO WOOCOMMERCE 2.1 */
+                        if ( function_exists( 'wc_attribute_taxonomy_name' ) ) {
+                            $taxonomy = wc_attribute_taxonomy_name($attribute);
+                        } else {
+                            $taxonomy = $woocommerce->attribute_taxonomy_name( $attribute );
+                        }
+
 
                         // create an array of product attribute taxonomies
                         $_attributes_array[] = $taxonomy;
@@ -122,9 +136,17 @@ if( !class_exists( 'YITH_WCAN_Frontend' ) ) {
                     }
                 }
 
-                add_filter('loop_shop_post_in', 'woocommerce_layered_nav_query');
+                if( version_compare( preg_replace( '/-beta-([0-9]+)/', '', $woocommerce->version ), '2.1', '<' ) ) {
+                    add_filter('loop_shop_post_in', 'woocommerce_layered_nav_query' );
+                } else {
+                    add_filter('loop_shop_post_in', array( WC()->query, 'layered_nav_query' ));
+                }
+
+
             }
         }
+
+
 
     }
 }

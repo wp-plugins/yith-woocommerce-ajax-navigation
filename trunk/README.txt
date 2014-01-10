@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation
 Requires at least: 3.5.1
-Tested up to: 3.5.1
-Stable tag: 1.1.2
+Tested up to: 3.8
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,8 +13,8 @@ YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop p
 
 == Description ==
 
-YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page. The plugin also includes two new types of Product Attributes visualizations: Color and Label.
-With Color display type you're able to assign a color (selected from a Color Picker) to each Product Attributes. With Label Color display you're able to assign a label (3 chars max) to your Product Attributes.
+YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page. The plugin also includes four new types of Product Attributes visualizations: Color, Label, List and Dropdown.
+With Color display type you're able to assign a color (selected from a Color Picker) to each Product Attributes. With Label Color display you're able to assign a label (3 chars max) to your Product Attributes. With List display your products attributes in a list. With Dropdown you're able to display your products attributes like a select.
 
 Working demos are available here:
 **[LIVE DEMO 1](http://demo.yithemes.com/room09/shop/)** - **[LIVE DEMO 2](http://demo.yithemes.com/bazar/shop/)**
@@ -63,6 +63,13 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 3. The final result
 
 == Changelog ==
+
+= 1.2.0 =
+
+* Added: Dropdown style
+* Added: Support to Wordpress 3.8
+* Fixed: Error with non-latin languages
+* Fixed: Improved WPML compatibility 
 
 = 1.1.2 =
 
