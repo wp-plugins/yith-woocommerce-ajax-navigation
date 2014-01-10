@@ -3,7 +3,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.2
+ * @version 1.2.0
  */
 jQuery(function($){
 

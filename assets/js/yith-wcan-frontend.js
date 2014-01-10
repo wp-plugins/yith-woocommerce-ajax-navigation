@@ -3,7 +3,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.2
+ * @version 1.2.0
  */
 jQuery(function($){
     /**
@@ -18,14 +18,26 @@ jQuery(function($){
         $.merge(j,e)}return $(h)},arrVer=function(d,c,a){for(var j=d.match(/%[^%]*%/g)||[],h=[],e=0;e<c.length;e++){for(var f=d,m=0;m<j.length;m++)var g=j[m].substr(1,j[m].length-2),f=f.replace(j[m],c[e][g]);h=$.merge(h,nonArrVer(f,a))}return $(h)};
     $.jseldom=function(d){if(2==arguments.length&&$.isPlainObject(arguments[1]))return arrVer.apply(this,[arguments[0],[arguments[1]]]);if(1==arguments.length||2==arguments.length&&!$.isArray(arguments[1]))return nonArrVer.apply(this,arguments);if(2==arguments.length)return arrVer.apply(this,arguments)};
 
-
     //wrap the container
     $(yith_wcan.container).wrap('<div class="yit-wcan-container"></div>');
     $('.woocommerce-info').wrap('<div class="yit-wcan-container"></div>');
 
-    $(document).on('click', '.yith-wcan a', function(e){
-        e.preventDefault();
-        var href = this.href;
+   $(document).on('click', '.yith-wcan a', function(e){
+
+       e.preventDefault();
+       var href = this.href;
+
+       if( $(this).data('type') == 'select' ) {
+
+           $(this).parents('div.yith-woo-ajax-navigation').find('a.yit-wcan-select-open').removeClass('active');
+
+           $(this).parent().find('div.yith-wcan-select-wrapper').animate({
+
+                visibility: "hidden",
+                opacity: 0
+
+            }, 300);
+       }
 
         //loading
         $(yith_wcan.container).html('').addClass('yith-wcan-loading');
@@ -84,6 +96,90 @@ jQuery(function($){
                 $(document).trigger("ready");
                 $(document).trigger("yith-wcan-ajax-filtered");
             }
+
         });
     });
+
+    /*AJAX NAVIGATION DROPDOWN STYLE*/
+
+    function yit_open_select_dropdown(element){
+
+        $(element).parent().find('div.yith-wcan-select-wrapper').css("z-index", "1").animate({
+
+            visibility: "visible",
+            opacity: 1
+
+
+        }, 300);
+
+        $(element).parent().find('a.yit-wcan-select-open').addClass('active');
+    }
+
+    function yit_close_select_dropdown(element){
+
+        $(element).parent().find('div.yith-wcan-select-wrapper').css("z-index", "-1").animate({
+
+            visibility: "hidden",
+            opacity: 0
+
+        }, 300);
+
+        $(element).parent().find('a.yit-wcan-select-open').removeClass('active');
+    }
+
+    var yit_hidden_filters_wrapper = function () {
+
+        $('div.yith-wcan-select-wrapper').animate({
+
+            visibility: "hidden",
+            opacity: 0
+
+        }, 0);
+
+        $('a.yit-wcan-select-open').removeClass('active');
+    }
+
+    var yit_active_filter = function() {
+
+        var filter_number = $('div.yith-wcan-select-wrapper ul.yith-wcan-select li.chosen').length;
+
+        yit_hidden_filters_wrapper();
+
+        $('div.yith-wcan-select-wrapper').each(function() {
+
+            var filter_name="";
+            var chosen =  $(this).find('ul.yith-wcan-select li.chosen').each(function(){
+                filter_name += $(this).text() + ', ';
+            });
+
+            filter_name = filter_name.substring(0, filter_name.length - 2);
+
+            if(filter_name != "") {
+                $(this).parent().find('a.yit-wcan-select-open').text(filter_name);
+            }
+       })
+    }
+
+    $(document).on('click' , 'a.yit-wcan-select-open.active' , function(e) {
+        e.preventDefault();
+        yit_close_select_dropdown(this);
+    });
+
+    $(document).on('click' , 'a.yit-wcan-select-open:not(.active)' , function(e) {
+        e.preventDefault();
+        yit_open_select_dropdown(this);
+    });
+
+    $(document).on('ready yith-wcan-ajax-filtered', yit_active_filter);
+
+    $(document).on('ready', yit_hidden_filters_wrapper );
+
+    $('body').on('click', function(e){
+
+        if( !$(e.target).hasClass('yit-wcan-select-open') ) {
+            yit_hidden_filters_wrapper();
+        }
+
+    });
+
 });

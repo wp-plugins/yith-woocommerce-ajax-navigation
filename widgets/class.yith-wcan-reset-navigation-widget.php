@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.1.2
+ * @version 1.2.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -102,7 +102,7 @@ function form( $instance ) {
         $instance = $old_instance;
 
         if ( empty( $new_instance['title'] ) )
-            $new_instance['title'] = $woocommerce->attribute_label( $new_instance['attribute'] );
+            $new_instance['title'] = function_exists('wc_attribute_label') ? wc_attribute_label( $new_instance['attribute'] ) : $woocommerce->attribute_label( $new_instance['attribute'] );
 
         $instance['label'] = strip_tags($new_instance['label']);
 
