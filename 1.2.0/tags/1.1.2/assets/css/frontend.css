@@ -1,0 +1,84 @@
+.yith-wcan-group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.yith-wcan-loading {
+    background: url('../images/ajax-loader.gif') no-repeat center;
+    height: 100px;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan li span,
+.woocommerce-page .widget_layered_nav ul.yith-wcan li span {
+    cursor: not-allowed;
+}
+
+/* Colors Type */
+.yith-wcan-color li {
+    float: left;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li a,
+.woocommerce .widget_layered_nav ul.yith-wcan-color li span,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span {
+    border: 1px solid #ddd;
+    display: block;
+    height: 20px;
+    margin: 5px 5px 5px 0;
+    padding: 0;
+    width: 20px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a:hover,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li a:hover,
+.woocommerce .widget_layered_nav ul.yith-wcan-color li.chosen a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li.chosen a,
+.woocommerce .widget_layered_nav ul.yith-wcan-color li span:hover,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span:hover,
+.woocommerce .widget_layered_nav ul.yith-wcan-color li.chosen span,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li.chosen span {
+    border: 1px solid #444;
+    background-image: none;
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+/* Labels Type */
+.yith-wcan-label li {
+    float: left;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li a,
+.woocommerce .widget_layered_nav ul.yith-wcan-label li span,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li span {
+    background: #efefef;
+    border: 1px solid #ddd;
+    display: block;
+    margin: 5px 5px 5px 0;
+    padding: 2px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-label li a:hover,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li a:hover,
+.woocommerce .widget_layered_nav ul.yith-wcan-label li.chosen a,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-label li.chosen a {
+    border: 1px solid #444;
+    background-image: none;
+    background-color: #ad74a2;
+    color: #fff;
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
