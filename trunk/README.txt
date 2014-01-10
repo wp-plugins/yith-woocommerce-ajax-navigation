@@ -60,6 +60,7 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 
 1. The widget in action with "Color" type selected
 2. The widget in action with "Label" type selected
+3. The widget in action with "Dropdown" type selected
 3. The final result
 
 == Changelog ==
