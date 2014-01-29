@@ -107,11 +107,15 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 260px;
+    max-width: 268px;
+    width: 100%;
     z-index: -1;
     border: 1px solid #cecece;
     padding: 10px 0px;
     margin-top: -16px;
+}
+.widget-area .yith-wcan-select-wrapper {
+    max-width: 260px;
 }
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li
 {
@@ -130,6 +134,7 @@
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li a, .widget .yit-wcan-select-open {
     width: 100%;
     color: #838383;
+    box-sizing: border-box;
 }
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li a:hover, .widget .yit-wcan-select-open:hover {
     text-decoration: none;
@@ -140,3 +145,5 @@
     background: transparent url(../images/cross.png) bottom 6px left no-repeat;
     border: none;
 }
+
+
