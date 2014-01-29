@@ -22,7 +22,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
          * @var string
          * @since 1.0.0
          */
-        public $version = '1.2.0';
+        public $version = '1.2.1';
 
         /**
          * Plugin object
