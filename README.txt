@@ -65,6 +65,10 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 
 == Changelog ==
 
+= 1.2.1 =
+
+* Fixed: Width of select dropdown too large
+
 = 1.2.0 =
 
 * Added: Dropdown style
