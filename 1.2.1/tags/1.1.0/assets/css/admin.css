@@ -1,0 +1,26 @@
+/* widget area */
+.yith_wcan_placeholder + .spinner {
+    background-position: center;
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.yith_wcan_placeholder table {
+    width: 100%;
+}
+
+.yith_wcan_placeholder th {
+    text-align: left;
+}
+
+.yith_wcan_placeholder td {
+    vertical-align: top;
+}
+
+/*
+.yith_wcan_placeholder .wp-color-result:after,
+.yith_wcan_placeholder .wp-color-result.wp-picker-open:after{
+    content: "";
+}
+*/
