@@ -146,4 +146,10 @@
     border: none;
 }
 
+/* WooCommerce 2.1.X Fix */
+.woocommerce .widget_layered_nav ul.yith-wcan-select li.chosen a:before,
+.woocommerce-page .widget_layered_nav ul.yith-wcan-select li.chosen a:before {
+    content: "";
+}
+
 

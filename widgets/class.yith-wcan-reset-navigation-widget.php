@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.2.1
+ * @version 1.3.0
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -29,7 +29,7 @@ class YITH_WCAN_Reset_Navigation_Widget extends WP_Widget {
 
         extract( $args );
 
-        if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $_attributes_array, array( 'product_cat', 'product_tag' ) ) ) )
+        if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( (array) $_attributes_array, array( 'product_cat', 'product_tag' ) ) ) )
             return;
 
         // Price
@@ -44,7 +44,7 @@ class YITH_WCAN_Reset_Navigation_Widget extends WP_Widget {
 
             //clean the url
             $link = yit_curPageURL();
-            foreach( $_chosen_attributes as $taxonomy => $data ) {
+            foreach( (array) $_chosen_attributes as $taxonomy => $data ) {
                 $taxonomy_filter 	= str_replace( 'pa_', '', $taxonomy );
                 $link = remove_query_arg( 'filter_' . $taxonomy_filter, $link );
             }
