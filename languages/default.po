@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH WooCommerce Ajax Navigation v1.3.0\n"
+"Project-Id-Version: YITH WooCommerce Ajax Navigation v1.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-10 10:28+0100\n"
-"PO-Revision-Date: 2014-02-12 15:59+0100\n"
+"POT-Creation-Date: 2014-03-03 12:55+0100\n"
+"PO-Revision-Date: 2014-03-03 12:55+0100\n"
 "Last-Translator: Your Inspiration Themes <plugins@yithemes.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 # @ yit
 #: functions.yith-wcan.php:52
-#: widgets/class.yith-wcan-navigation-widget.php:695
+#: widgets/class.yith-wcan-navigation-widget.php:702
 msgid "Color"
 msgstr ""
 
@@ -45,53 +45,69 @@ msgstr ""
 msgid "YITH WooCommerce Ajax Navigation"
 msgstr ""
 
-#: widgets/class.yith-wcan-navigation-widget.php:215
+#: widgets/class.yith-wcan-navigation-widget.php:220
 msgid "Filters List:"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:676
+#: widgets/class.yith-wcan-navigation-widget.php:683
 #: widgets/class.yith-wcan-reset-navigation-widget.php:85
 msgid "Title"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:681
+#: widgets/class.yith-wcan-navigation-widget.php:688
 msgid "Attribute:"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:686
+#: widgets/class.yith-wcan-navigation-widget.php:693
 msgid "Query Type:"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:688
+#: widgets/class.yith-wcan-navigation-widget.php:695
 msgid "AND"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:689
+#: widgets/class.yith-wcan-navigation-widget.php:696
 msgid "OR"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:692
+#: widgets/class.yith-wcan-navigation-widget.php:699
 msgid "Type:"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:694
+#: widgets/class.yith-wcan-navigation-widget.php:701
 msgid "List"
 msgstr ""
 
 # @ yit
-#: widgets/class.yith-wcan-navigation-widget.php:696
+#: widgets/class.yith-wcan-navigation-widget.php:703
 msgid "Label"
 msgstr ""
 
-#: widgets/class.yith-wcan-navigation-widget.php:697
+#: widgets/class.yith-wcan-navigation-widget.php:704
 msgid "Dropdown"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:709
+msgid "Display (default All):"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:711
+msgid "All (no hierarchical)"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:712
+msgid "All Hierarchical"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:713
+msgid "Only Parent"
 msgstr ""
 
 #: widgets/class.yith-wcan-reset-navigation-widget.php:21

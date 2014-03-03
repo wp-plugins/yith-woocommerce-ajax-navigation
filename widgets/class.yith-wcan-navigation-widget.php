@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -32,10 +32,14 @@ if( !class_exists( 'YITH_WCAN' ) ) {
             if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $_attributes_array, array( 'product_cat', 'product_tag' ) ) ) )
                 return;
 
-            $current_term 	= $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->term_id : '';
-            $current_tax 	= $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->taxonomy : '';
-
-            $title 			= apply_filters('widget_title', $instance['title'], $instance, $this->id_base);
+            $current_term 	 = $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->term_id : '';
+            $current_tax 	 = $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->taxonomy : '';
+            $title 			 = apply_filters('widget_title', $instance['title'], $instance, $this->id_base);
+            $query_type 	 = isset( $instance['query_type'] ) ? $instance['query_type'] : 'and';
+            $display_type 	 = isset( $instance['type'] ) ? $instance['type'] : 'list';
+            $is_child_class  = 'yit-wcan-child-terms';
+            $is_chosen_class = 'chosen';
+            $terms_type_list = ( isset( $instance['display'] ) && ( $display_type == 'list' || $display_type == 'select' ) ) ? $instance['display'] : 'all';
 
             /* FIX TO WOOCOMMERCE 2.1 */
             if ( function_exists( 'wc_attribute_taxonomy_name' ) ) {
@@ -44,16 +48,10 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                 $taxonomy = $woocommerce->attribute_taxonomy_name($instance['attribute'] );
             }
 
-
-
-
-            $query_type 	= isset( $instance['query_type'] ) ? $instance['query_type'] : 'and';
-            $display_type 	= isset( $instance['type'] ) ? $instance['type'] : 'list';
-
             if ( ! taxonomy_exists( $taxonomy ) )
                 return;
 
-            $terms = get_terms( $taxonomy, array( 'hide_empty' => '1' ) );
+            $terms = yit_get_terms( $terms_type_list, $taxonomy );
 
             if ( count( $terms ) > 0 ) {
 
@@ -98,8 +96,9 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                             if ( $count > 0 && $current_term !== $term->term_id )
                                 $found = true;
 
-                            if ( $count == 0 && ! $option_is_set )
+                            if ( ( $terms_type_list != 'hierarchical' || ! yit_term_has_child($term, $taxonomy) ) && $count == 0 && ! $option_is_set ){
                                 continue;
+                            }
 
                         // If this is an OR query, show all options so search can be expanded
                         } else {
@@ -169,7 +168,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         // Current Filter = this widget
                         if ( isset( $_chosen_attributes[ $taxonomy ] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) {
 
-                            $class = 'class="chosen"';
+                            $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
 
                             // Remove this term is $current_filter has more than 1 term filtered
                             if ( sizeof( $current_filter ) > 1 ) {
@@ -179,7 +178,8 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                         } else {
 
-                            $class = '';
+                            $class = ($terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
+
                             $link = add_query_arg( $arg, implode( ',', $current_filter ), $link );
 
                         }
@@ -196,6 +196,8 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         if ( $query_type == 'or' && ! ( sizeof( $current_filter ) == 1 && isset( $_chosen_attributes[ $taxonomy ]['terms'] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) )
                             $link = add_query_arg( 'query_type_' . sanitize_title( $instance['attribute'] ), 'or', $link );
 
+
+
                         echo '<li ' . $class . '>';
 
                         echo ( $count > 0 || $option_is_set ) ? '<a href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '">' : '<span>';
@@ -204,7 +206,9 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                         echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
 
-                        echo ' <small class="count">' . $count . '</small></li>';
+                        if( $count != 0 ) {
+                            echo ' <small class="count">' . $count . '</small></li>';
+                        }
 
                     }
 
@@ -246,8 +250,9 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         if ( $count > 0 && $current_term !== $term->term_id )
                             $found = true;
 
-                        if ( $count == 0 && ! $option_is_set )
-                            continue;
+                        if ( ( $terms_type_list != 'hierarchical' || ! yit_term_has_child($term, $taxonomy) ) && $count == 0 && ! $option_is_set ){
+                                continue;
+                            }
 
                         // If this is an OR query, show all options so search can be expanded
                     } else {
@@ -317,7 +322,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                     // Current Filter = this widget
                     if ( isset( $_chosen_attributes[ $taxonomy ] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) {
 
-                        $class = 'class="chosen"';
+                        $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
 
                         // Remove this term is $current_filter has more than 1 term filtered
                         if ( sizeof( $current_filter ) > 1 ) {
@@ -327,7 +332,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                     } else {
 
-                        $class = '';
+                        $class = ($terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
                         $link = add_query_arg( $arg, implode( ',', $current_filter ), $link );
 
                     }
@@ -461,7 +466,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         // Current Filter = this widget
                         if ( isset( $_chosen_attributes[ $taxonomy ] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) {
 
-                            $class = 'class="chosen"';
+                            $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
 
                             // Remove this term is $current_filter has more than 1 term filtered
                             if ( sizeof( $current_filter ) > 1 ) {
@@ -471,7 +476,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                         } else {
 
-                            $class = '';
+                            $class = ($terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
                             $link = add_query_arg( $arg, implode( ',', $current_filter ), $link );
 
                         }
@@ -488,16 +493,15 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         if ( $query_type == 'or' && ! ( sizeof( $current_filter ) == 1 && isset( $_chosen_attributes[ $taxonomy ]['terms'] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) )
                             $link = add_query_arg( 'query_type_' . sanitize_title( $instance['attribute'] ), 'or', $link );
 
-                        echo '<li ' . $class . '>';
+                        if( $instance['colors'][$term->term_id] != '' ) {
+                            echo '<li ' . $class . '>';
 
-                        echo ( $count > 0 || $option_is_set ) ? '<a style="background-color:' . $instance['colors'][$term->term_id] . ';" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '" title="' . $term->name . '" >' : '<span style="background-color:' . $instance['colors'][$term->term_id] . ';" >';
+                            echo ( $count > 0 || $option_is_set ) ? '<a style="background-color:' . $instance['colors'][$term->term_id] . ';" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '" title="' . $term->name . '" >' : '<span style="background-color:' . $instance['colors'][$term->term_id] . ';" >';
 
-                        echo $term->name;
+                            echo $term->name;
 
-                        echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
-
-                        //echo ' <small class="count">' . $count . '</small></li>';
-
+                            echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
+                        }
                     }
 
                     echo "</ul>";
@@ -603,7 +607,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         // Current Filter = this widget
                         if ( isset( $_chosen_attributes[ $taxonomy ] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) {
 
-                            $class = 'class="chosen"';
+                            $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
 
                             // Remove this term is $current_filter has more than 1 term filtered
                             if ( sizeof( $current_filter ) > 1 ) {
@@ -613,7 +617,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
 
                         } else {
 
-                            $class = '';
+                            $class = ($terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
                             $link = add_query_arg( $arg, implode( ',', $current_filter ), $link );
 
                         }
@@ -630,16 +634,16 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         if ( $query_type == 'or' && ! ( sizeof( $current_filter ) == 1 && isset( $_chosen_attributes[ $taxonomy ]['terms'] ) && is_array( $_chosen_attributes[ $taxonomy ]['terms'] ) && in_array( $term->term_id, $_chosen_attributes[ $taxonomy ]['terms'] ) ) )
                             $link = add_query_arg( 'query_type_' . sanitize_title( $instance['attribute'] ), 'or', $link );
 
-                        echo '<li ' . $class . '>';
+                        if($instance['labels'][$term->term_id] != '' ){
 
-                        echo ( $count > 0 || $option_is_set ) ? '<a title="' . $term->name . '" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '">' : '<span>';
+                            echo '<li ' . $class . '>';
 
-                        echo $instance['labels'][$term->term_id];
+                            echo ( $count > 0 || $option_is_set ) ? '<a title="' . $term->name . '" href="' . esc_url( apply_filters( 'woocommerce_layered_nav_link', $link ) ) . '">' : '<span>';
 
-                        echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
+                            echo $instance['labels'][$term->term_id];
 
-                        //echo ' <small class="count">' . $count . '</small></li>';
-
+                            echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
+                        }
                     }
                     echo "</ul>";
 
@@ -661,12 +665,13 @@ if( !class_exists( 'YITH_WCAN' ) ) {
             global $woocommerce;
 
             $defaults = array(
-                'title' => '',
-                'attribute' => '',
+                'title'      => '',
+                'attribute'  => '',
                 'query_type' => 'and',
-                'type' => 'list',
-                'colors' => '',
-                'labels' => ''
+                'type'       => 'list',
+                'colors'     => '',
+                'labels'     => '',
+                'display'    => 'all'
             );
 
             $instance = wp_parse_args( (array) $instance, $defaults ); ?>
@@ -695,7 +700,17 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                     <option value="color" <?php selected( 'color', $instance['type'] ) ?>><?php _e( 'Color', 'yit' ) ?></option>
                     <option value="label" <?php selected( 'label', $instance['type'] ) ?>><?php _e( 'Label', 'yit' ) ?></option>
                     <option value="select" <?php selected( 'select', $instance['type'] ) ?>><?php _e( 'Dropdown', 'yit' ) ?></option>
-                </select></p>
+                </select>
+            </p>
+
+            <p id="yit-wcan-display" class="yit-wcan-display-<?php echo $instance['type'] ?>">
+                <label for="<?php echo $this->get_field_id('display'); ?>"><strong><?php _e('Display (default All):', 'yit') ?></strong></label>
+                <select class="yith_wcan_type widefat" id="<?php echo esc_attr( $this->get_field_id('display') ); ?>" name="<?php echo esc_attr( $this->get_field_name('display') ); ?>">
+                    <option value="all"          <?php selected( 'all', $instance['display'] ) ?>>          <?php _e( 'All (no hierarchical)', 'yit' ) ?></option>
+                    <option value="hierarchical" <?php selected( 'hierarchical', $instance['display'] ) ?>> <?php _e( 'All Hierarchical', 'yit' ) ?>   </option>
+                    <option value="parent"       <?php selected( 'parent', $instance['display'] ) ?>>       <?php _e( 'Only Parent', 'yit' ) ?>        </option>
+                </select>
+            </p>
 
             <div class="yith_wcan_placeholder">
                 <?php yith_wcan_attributes_table(
@@ -703,7 +718,8 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         $instance['attribute'],
                         'widget-' . $this->id . '-',
                         'widget-' . $this->id_base . '[' . $this->number . ']',
-                        $instance['type'] == 'color' ? $instance['colors'] : ( $instance['type'] == 'label' ? $instance['labels'] : array() )
+                        $instance['type'] == 'color' ? $instance['colors'] : ( $instance['type'] == 'label' ? $instance['labels'] : array() ),
+                        $instance['display']
                       );
                 ?>
             </div>
@@ -731,6 +747,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
             $instance['type'] = stripslashes( $new_instance['type'] );
             $instance['colors'] = $new_instance['colors'];
             $instance['labels'] = $new_instance['labels'];
+            $instance['display'] = $new_instance['display'];
 
             return $instance;
         }

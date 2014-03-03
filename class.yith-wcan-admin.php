@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -88,13 +88,12 @@ if( !class_exists( 'YITH_WCAN_Admin' ) ) {
 
             $terms = get_terms( 'pa_' . $attribute, array('hide_empty'=>'0') );
 
-
             $return['content'] = yith_wcan_attributes_table(
                 $type,
                 $attribute,
                 $_POST['id'],
                 $_POST['name'],
-                array(),
+                json_decode($_POST['type']),
                 false
             );
 

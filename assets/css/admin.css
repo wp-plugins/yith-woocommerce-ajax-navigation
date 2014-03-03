@@ -18,9 +18,6 @@
     vertical-align: top;
 }
 
-/*
-.yith_wcan_placeholder .wp-color-result:after,
-.yith_wcan_placeholder .wp-color-result.wp-picker-open:after{
-    content: "";
+p.yit-wcan-display-label, p.yit-wcan-display-color {
+    display: none;
 }
-*/

@@ -3,12 +3,12 @@
 Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation
 Requires at least: 3.5.1
-Tested up to: 3.8
-Stable tag: 1.3.0
+Tested up to: 3.8.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page. 
+YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page.
 WooCommerce Compatible up to 2.1.x
 
 
@@ -65,6 +65,13 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 4. The final result
 
 == Changelog ==
+
+= 1.3.1 =
+
+* Added: Attribute order (All, Hieralchical or Only Parent style)
+* Fixed: Dropdown Style on Firefox
+* Fixed: Blank box on attribute without label (Label Style)
+* Fixed: Blank box on attribute without color (Color Stle)
 
 = 1.3.0 =
 
