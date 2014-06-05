@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.3.1
+ * @version 1.3.2
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -38,7 +38,7 @@ if( !class_exists( 'YITH_WCAN_Frontend' ) ) {
 			add_action( 'init', array( $this, 'init' ) );
             add_action( 'init', array( $this, 'woocommerce_layered_nav_init' ), 99 );
 
-            add_action( 'wp_head', array( $this, 'enqueue_styles_scripts' ) );
+            add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
 
             // YITH WCAN Loaded
             do_action( 'yith_wcan_loaded' );

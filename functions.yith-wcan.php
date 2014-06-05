@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.3.1
+ * @version 1.3.2
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -187,22 +187,24 @@ if( !function_exists('yit_get_terms') ) {
      */
     function yit_get_terms( $case, $taxonomy ) {
 
+        $exclude = apply_filters( 'yith_wcan_exclude_terms', array() );
+
         switch ( $case ) {
 
                     case 'all':
-                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true ) );
+                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true, 'exclude' => $exclude ) );
                         break;
 
                     case 'hierarchical':
-                        $terms = yit_reorder_terms_by_parent( get_terms( $taxonomy, array( 'hide_empty' => true ) ) );
+                        $terms = yit_reorder_terms_by_parent( get_terms( $taxonomy, array( 'hide_empty' => true, 'exclude' => $exclude ) ) );
                         break;
 
                     case 'parent' :
-                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true, 'parent' => false ) );
+                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true, 'parent' => false, 'exclude' => $exclude ) );
                         break;
 
                     default:
-                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true ) );
+                        $terms = get_terms( $taxonomy, array( 'hide_empty' => true, 'exclude' => $exclude ) );
                         break;
                 }
 

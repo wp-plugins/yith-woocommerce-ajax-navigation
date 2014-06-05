@@ -4,7 +4,7 @@
  *
  * @author Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
- * @version 1.3.1
+ * @version 1.3.2
  */
 
 if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
@@ -207,7 +207,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
                         echo ( $count > 0 || $option_is_set ) ? '</a>' : '</span>';
 
                         if( $count != 0 ) {
-                            echo ' <small class="count">' . $count . '</small></li>';
+                            echo ' <small class="count">' . $count . '</small><div class="clear"></div></li>';
                         }
 
                     }
