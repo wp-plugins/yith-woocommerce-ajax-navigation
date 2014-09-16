@@ -93,7 +93,7 @@ if( !class_exists( 'YITH_WCAN_Admin' ) ) {
                 $attribute,
                 $_POST['id'],
                 $_POST['name'],
-                json_decode($_POST['type']),
+                json_decode($_POST['value']),
                 false
             );
 

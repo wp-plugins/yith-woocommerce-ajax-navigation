@@ -2,14 +2,16 @@
 /**
  * Main class
  *
- * @author Your Inspiration Themes
+ * @author  Your Inspiration Themes
  * @package YITH WooCommerce Ajax Navigation
  * @version 1.3.2
  */
 
-if ( !defined( 'YITH_WCAN' ) ) { exit; } // Exit if accessed directly
+if ( ! defined( 'YITH_WCAN' ) ) {
+    exit;
+} // Exit if accessed directly
 
-if( !class_exists( 'YITH_WCAN' ) ) {
+if ( ! class_exists( 'YITH_WCAN' ) ) {
     /**
      * YITH WooCommerce Ajax Navigation
      *
@@ -22,7 +24,7 @@ if( !class_exists( 'YITH_WCAN' ) ) {
          * @var string
          * @since 1.0.0
          */
-        public $version = '1.3.2';
+        public $version = '1.4.0';
 
         /**
          * Plugin object
@@ -45,9 +47,10 @@ if( !class_exists( 'YITH_WCAN' ) ) {
             add_action( 'widgets_init', array( $this, 'registerWidgets' ) );
 
 
-            if( is_admin() ) {
+            if ( is_admin() ) {
                 $this->obj = new YITH_WCAN_Admin( $this->version );
-            }  else {
+            }
+            else {
                 $this->obj = new YITH_WCAN_Frontend( $this->version );
             }
 
@@ -59,16 +62,17 @@ if( !class_exists( 'YITH_WCAN' ) ) {
          * Init method
          *
          * @access public
-         * @since 1.0.0
+         * @since  1.0.0
          */
-        public function init() {}
+        public function init() {
+        }
 
 
         /**
          * Load and register widgets
          *
          * @access public
-         * @since 1.0.0
+         * @since  1.0.0
          */
         public function registerWidgets() {
             register_widget( 'YITH_WCAN_Navigation_Widget' );

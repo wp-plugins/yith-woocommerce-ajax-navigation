@@ -17,9 +17,11 @@ class Google_Font {
      */
     public function google_fonts_url() {
         $base_url = 'http://fonts.googleapis.com/css?family=';
-        $fonts = array();
+        $fonts    = array();
 
-        if ( empty( $this->google_fonts ) ) return;
+        if ( empty( $this->google_fonts ) ) {
+            return;
+        }
 
         foreach ( $this->google_fonts as $font => $variants ) {
             $fonts[] = urlencode( $font . ':' . implode( ',', $variants ) );
@@ -31,15 +33,21 @@ class Google_Font {
     /**
      * Add a new google font in queue
      *
-     * @param $font The name of google font
+     * @param       $font     The name of google font
      * @param array $variants The variatns for the google font to add
      */
     public function add_google_font( $font, $variants = array() ) {
-        if ( ! is_array( $variants ) ) $variants = array( $variants );
+        if ( ! is_array( $variants ) ) {
+            $variants = array( $variants );
+        }
 
         foreach ( $variants as $variant ) {
-            if ( ! isset( $this->google_fonts[$font] ) ) $this->google_fonts[$font] = array( 300, 400 );
-            if ( ! in_array( $variant, $this->google_fonts[$font] ) ) $this->google_fonts[$font][] = $variant;
+            if ( ! isset( $this->google_fonts[$font] ) ) {
+                $this->google_fonts[$font] = array( 300, 400 );
+            }
+            if ( ! in_array( $variant, $this->google_fonts[$font] ) ) {
+                $this->google_fonts[$font][] = $variant;
+            }
         }
     }
 }
@@ -48,7 +56,7 @@ if ( ! function_exists( 'yith_add_google_font' ) ) {
     /**
      * Add a new google font in queue
      *
-     * @param $font The name of google font
+     * @param       $font    The name of google font
      * @param array $variant The variatns for the google font to add
      */
     function yith_add_google_font( $font, $variant = array() ) {

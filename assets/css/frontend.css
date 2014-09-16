@@ -114,28 +114,31 @@
     padding: 10px 0px;
     margin-top: -16px;
 }
+
 .widget-area .yith-wcan-select-wrapper {
     max-width: 260px;
 }
-.yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li
-{
+
+.yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li {
     padding: 5px 8px;
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;
 }
+
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li:hover,
-.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen{
+.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen {
     -webkit-box-shadow: 0px 3px 0px #F2F2F2 inset, 0px -3px 0px #F2F2F2 inset;
     -moz-box-shadow: 0px 3px 0px #f2f2f2 inset, 0px -3px 0px #f2f2f2 inset;
     box-shadow: 0px 3px 0px #F2F2F2 inset, 0px -3px 0px #F2F2F2 inset;
     border-bottom: 1px solid #cecece;
     border-top: 1px solid #cecece;
 }
+
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li a, .widget .yit-wcan-select-open {
     width: 100%;
     color: #838383;
     box-sizing: border-box;
-    -moz-box-sizing:border-box; /* Firefox */
+    -moz-box-sizing: border-box; /* Firefox */
 }
 
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li a, .widget .yit-wcan-select-open {
@@ -147,7 +150,7 @@
     color: #838383;
 }
 
-.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a, .woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a{
+.woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a, .woocommerce-page .widget_layered_nav .yith-wcan-select-wrapper ul li.chosen a {
     background: transparent url(../images/cross.png) bottom 6px left no-repeat;
     border: none;
 }

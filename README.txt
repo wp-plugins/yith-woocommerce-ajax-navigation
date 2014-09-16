@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation
 Requires at least: 3.5.1
-Tested up to: 3.9.1
-Stable tag: 1.3.2
+Tested up to: 4.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,13 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 
 == Changelog ==
 
+= 1.4.0 =
+
+* Added: Support to WC 2.2
+* Updated: Plugin Core Framework
+* Fixed: Widget error on empty title
+* Fixed: Ajax load on widget type switching
+
 = 1.3.2 =
 
 * Fixed: Wrong enqueue of the main css file
@@ -92,7 +99,7 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 * Added: Dropdown style
 * Added: Support to Wordpress 3.8
 * Fixed: Error with non-latin languages
-* Fixed: Improved WPML compatibility 
+* Fixed: Improved WPML compatibility
 
 = 1.1.2 =
 

@@ -2,14 +2,15 @@
 /**
  * Your Inspiration Themes Panel
  *
- * @author Your Inspiration Themes
+ * @author  Your Inspiration Themes
  * @version 0.1.0
  */
 
-if( !class_exists('YITH_Panel') ) {
+if ( ! class_exists( 'YITH_Panel' ) ) {
     /*
      * The class manages the theme options for the Plugin
      */
+
     class YITH_Panel {
 
         /**
@@ -23,11 +24,11 @@ if( !class_exists('YITH_Panel') ) {
          * Parameters for add_submenu_page
          *
          *  add_submenu_page(
-         *      'themes.php',		// The file name of a standard WordPress admin page
-         *      'Theme Options',	// The text to be displayed in the title tags of the page when the menu is selected
-         *      'Theme Options',	// The text to be used for the menu
-         *      'administrator',	// The capability (or role) required for this menu to be displayed to the user.
-         *      'theme-options',	// The slug name to refer to this menu by (should be unique for this menu).
+         *      'themes.php',        // The file name of a standard WordPress admin page
+         *      'Theme Options',    // The text to be displayed in the title tags of the page when the menu is selected
+         *      'Theme Options',    // The text to be used for the menu
+         *      'administrator',    // The capability (or role) required for this menu to be displayed to the user.
+         *      'theme-options',    // The slug name to refer to this menu by (should be unique for this menu).
          *      'theme_options_display_page' // The function to be called to output the content for this page.
          *  );
          *
@@ -81,24 +82,24 @@ if( !class_exists('YITH_Panel') ) {
         /**
          * Constructor
          *
-         * @param array $submenu   Parameters for add_submenu_page
-         * @param array $options   Array of plugin options
+         * @param array $submenu Parameters for add_submenu_page
+         * @param array $options Array of plugin options
          *
          */
         public function __construct( $submenu, $options, $banner = array(), $option_group = false, $option_name = false ) {
-            $this->_submenu = apply_filters('yith_panel_submenu', $submenu);
-            $this->options = apply_filters('yith_panel_options', $options);
+            $this->_submenu = apply_filters( 'yith_panel_submenu', $submenu );
+            $this->options  = apply_filters( 'yith_panel_options', $options );
 
-            if( !empty($banner) ) {
+            if ( ! empty( $banner ) ) {
                 $this->banner_url = $banner['url'];
                 $this->banner_img = $banner['img'];
             }
 
-            if( $option_group ) {
+            if ( $option_group ) {
                 $this->option_group = $option_group;
             }
 
-            if( $option_name ) {
+            if ( $option_name ) {
                 $this->option_name = $option_name;
             }
 
@@ -106,9 +107,9 @@ if( !class_exists('YITH_Panel') ) {
             //register new settings option group
             //include js and css files
             //print browser
-            add_action( 'admin_menu', array( $this, 'add_submenu_page') );
-            add_action( 'admin_init', array( $this, 'panel_register_setting') );
-            add_action( 'admin_enqueue_scripts', array( $this, 'panel_enqueue') );
+            add_action( 'admin_menu', array( $this, 'add_submenu_page' ) );
+            add_action( 'admin_init', array( $this, 'panel_register_setting' ) );
+            add_action( 'admin_enqueue_scripts', array( $this, 'panel_enqueue' ) );
 
             // add the typography javascript vars
             add_action( 'yith_panel_after_panel', array( $this, 'js_typo_vars' ) );
@@ -119,7 +120,7 @@ if( !class_exists('YITH_Panel') ) {
          *
          * @return void
          * @access public
-         * @link http://codex.wordpress.org/Function_Reference/add_submenu_page
+         * @link   http://codex.wordpress.org/Function_Reference/add_submenu_page
          */
         public function add_submenu_page() {
             $submenu = $this->_submenu;
@@ -129,7 +130,7 @@ if( !class_exists('YITH_Panel') ) {
                 $submenu[2],
                 $submenu[3],
                 $submenu[4],
-                array( $this, isset($submenu[5]) ? $submenu[5] : 'display_panel_page' )
+                array( $this, isset( $submenu[5] ) ? $submenu[5] : 'display_panel_page' )
             );
         }
 
@@ -145,15 +146,15 @@ if( !class_exists('YITH_Panel') ) {
             ?>
             <div id="icon-themes" class="icon32"><br /></div>
             <h2 class="nav-tab-wrapper">
-                <?php foreach( $this->options as $k=>$tab ): ?>
-                    <a class="nav-tab<?php if( $page == $k ): ?> nav-tab-active<?php endif ?>" href="<?php echo add_query_arg('panel_page', $k) ?>"><?php echo $tab['label'] ?></a>
+                <?php foreach ( $this->options as $k => $tab ): ?>
+                    <a class="nav-tab<?php if ( $page == $k ): ?> nav-tab-active<?php endif ?>" href="<?php echo add_query_arg( 'panel_page', $k ) ?>"><?php echo $tab['label'] ?></a>
                 <?php endforeach ?>
-                <?php do_action('yith_panel_after_tabs'); ?>
+                <?php do_action( 'yith_panel_after_tabs' ); ?>
             </h2>
 
             <div class="wrap">
                 <?php $this->printBanner() ?>
-                <?php do_action('yith_panel_before_panel'); ?>
+                <?php do_action( 'yith_panel_before_panel' ); ?>
                 <form action="options.php" method="post">
 
                     <?php do_settings_sections( $this->option_name ); ?>
@@ -164,7 +165,7 @@ if( !class_exists('YITH_Panel') ) {
                         <input class="button-primary" type="submit" name="save_options" value="Save Options" />
                     </p>
                 </form>
-                <?php do_action('yith_panel_after_panel'); ?>
+                <?php do_action( 'yith_panel_after_panel' ); ?>
             </div>
         <?php
         }
@@ -174,7 +175,9 @@ if( !class_exists('YITH_Panel') ) {
          */
         public function js_typo_vars() {
             global $yith_panel_if_typography;
-            if ( ! isset( $yith_panel_if_typography ) || ! $yith_panel_if_typography ) return;
+            if ( ! isset( $yith_panel_if_typography ) || ! $yith_panel_if_typography ) {
+                return;
+            }
 
             $web_fonts = array(
                 "Arial",
@@ -191,14 +194,14 @@ if( !class_exists('YITH_Panel') ) {
             );
 
             // http://niubbys.altervista.org/google_fonts.php
-            $google_fonts = file_get_contents( dirname(__FILE__) . '/assets/js/google_fonts.json' );
+            $google_fonts = file_get_contents( dirname( __FILE__ ) . '/assets/js/google_fonts.json' );
             ?>
             <script type="text/javascript">
                 var yit_google_fonts = '<?php echo $google_fonts ?>',
                     yit_web_fonts = '{"items":<?php echo json_encode( $web_fonts ) ?>}',
                     yit_family_string = '';
             </script>
-            <?php
+        <?php
         }
 
         /**
@@ -206,35 +209,35 @@ if( !class_exists('YITH_Panel') ) {
          *
          * @return void
          * @access public
-         * @link http://codex.wordpress.org/Function_Reference/register_setting
-         * @link http://codex.wordpress.org/Function_Reference/add_settings_section
-         * @link http://codex.wordpress.org/Function_Reference/add_settings_field
+         * @link   http://codex.wordpress.org/Function_Reference/register_setting
+         * @link   http://codex.wordpress.org/Function_Reference/add_settings_section
+         * @link   http://codex.wordpress.org/Function_Reference/add_settings_field
          */
         public function panel_register_setting() {
             $page = $this->_get_tab();
-            $tab = isset( $this->options[$page] ) ? $this->options[$page] : array();
+            $tab  = isset( $this->options[$page] ) ? $this->options[$page] : array();
 
-            if( !empty($tab['sections']) ) {
+            if ( ! empty( $tab['sections'] ) ) {
                 //add sections and fields
-                foreach( $tab['sections'] as $section_name => $section) {
+                foreach ( $tab['sections'] as $section_name => $section ) {
                     //add the section
                     add_settings_section(
                         $section_name,
                         $section['title'],
-                        array( $this, 'panel_section_content'),
+                        array( $this, 'panel_section_content' ),
                         $this->option_name
                     );
 
                     //add the fields
-                    foreach( $section['fields'] as $option_name => $option ) {
-                        $option['id'] = $option_name;
+                    foreach ( $section['fields'] as $option_name => $option ) {
+                        $option['id']        = $option_name;
                         $option['label_for'] = $option_name;
 
                         //register settings group
                         register_setting(
                             $this->option_group,
                             $option_name,
-                            array( $this, 'panel_sanitize')
+                            array( $this, 'panel_sanitize' )
                         );
 
                         add_settings_field(
@@ -258,8 +261,8 @@ if( !class_exists('YITH_Panel') ) {
          */
         public function panel_section_content( $section ) {
             $page = $this->_get_tab();
-            if( isset( $this->options[$page]['sections'][ $section['id'] ]['description'] )) {
-                echo "<p class='section-description'>" . $this->options[$page]['sections'][ $section['id'] ]['description'] . "</p>";
+            if ( isset( $this->options[$page]['sections'][$section['id']]['description'] ) ) {
+                echo "<p class='section-description'>" . $this->options[$page]['sections'][$section['id']]['description'] . "</p>";
             }
         }
 
@@ -267,11 +270,12 @@ if( !class_exists('YITH_Panel') ) {
          * Sanitize the option's value
          *
          * @param array $input
+         *
          * @return array
          * @access public
          */
         public function panel_sanitize( $input ) {
-            return apply_filters('yith_panel_sanitize', $input);
+            return apply_filters( 'yith_panel_sanitize', $input );
         }
 
         /**
@@ -282,11 +286,13 @@ if( !class_exists('YITH_Panel') ) {
          * @access protected
          */
         public function _get_tab() {
-            if( isset($_POST['panel_page']) && $_POST['panel_page'] != '' ) {
+            if ( isset( $_POST['panel_page'] ) && $_POST['panel_page'] != '' ) {
                 return $_POST['panel_page'];
-            } elseif( isset($_GET['panel_page']) && $_GET['panel_page'] != '' ) {
+            }
+            elseif ( isset( $_GET['panel_page'] ) && $_GET['panel_page'] != '' ) {
                 return $_GET['panel_page'];
-            } else {
+            }
+            else {
                 $tabs = array_keys( $this->options );
                 return $tabs[0];
             }
@@ -301,12 +307,12 @@ if( !class_exists('YITH_Panel') ) {
         public function panel_enqueue( $hook ) {
             global $pagenow;
 
-            if( $pagenow == $this->_submenu[0] && isset( $_GET['page'] ) && $_GET['page'] == $this->_submenu[4] ) {
+            if ( $pagenow == $this->_submenu[0] && isset( $_GET['page'] ) && $_GET['page'] == $this->_submenu[4] ) {
                 wp_enqueue_style( 'wp-color-picker' );
                 wp_enqueue_style( 'jquery-ui', 'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css' );
                 wp_enqueue_script( 'jquery-ui-datepicker' );
 
-                wp_enqueue_style( 'yith-panel-css', plugin_dir_url( __FILE__ ) . 'assets/css/yith-panel.css', array('wp-color-picker'), $this->version );
+                wp_enqueue_style( 'yith-panel-css', plugin_dir_url( __FILE__ ) . 'assets/css/yith-panel.css', array( 'wp-color-picker' ), $this->version );
                 wp_enqueue_script( 'yith-panel-js', plugin_dir_url( __FILE__ ) . 'assets/js/yith-panel.js', array( 'jquery', 'wp-color-picker' ), $this->version, true );
 
                 wp_enqueue_media();
@@ -323,69 +329,73 @@ if( !class_exists('YITH_Panel') ) {
          * @access public
          */
         public function panel_field_content( $field ) {
-            $value = get_option( $field['id'], isset($field['std']) ? $field['std'] : '' );
-            $id = $field['id'];
-            $name = $field['id'];
+            $value = get_option( $field['id'], isset( $field['std'] ) ? $field['std'] : '' );
+            $id    = $field['id'];
+            $name  = $field['id'];
 
             $echo = '';
 
-            switch( $field['type'] ) {
+            switch ( $field['type'] ) {
                 case 'text':
-                    $echo  = "<input type='text' id='{$id}' name='{$name}' value='{$value}' class='regular-text code' />";
+                    $echo = "<input type='text' id='{$id}' name='{$name}' value='{$value}' class='regular-text code' />";
 
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
 
-                case 'textarea': $echo = "<textarea name='{$name}' id='{$id}' class='large-text code' rows='10' cols='50'>{$value}</textarea>";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                case 'textarea':
+                    $echo = "<textarea name='{$name}' id='{$id}' class='large-text code' rows='10' cols='50'>{$value}</textarea>";
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
 
-                case 'checkbox': $echo = "<input type='checkbox' id='{$id}' name='{$name}' value='1' ". checked($value, true, false) ." />";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                case 'checkbox':
+                    $echo = "<input type='checkbox' id='{$id}' name='{$name}' value='1' " . checked( $value, true, false ) . " />";
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= " <label for='{$id}'><span class='description'>{$field['description']}</span></label>";
                     }
                     break;
 
-                case 'select': $echo  = "<select name='{$name}' id='{$id}'>";
-                    foreach( $field['options'] as $v=>$label ) {
-                        $echo .= "<option value='{$v}'". selected($value, $v, false) .">{$label}</option>";
+                case 'select':
+                    $echo = "<select name='{$name}' id='{$id}'>";
+                    foreach ( $field['options'] as $v => $label ) {
+                        $echo .= "<option value='{$v}'" . selected( $value, $v, false ) . ">{$label}</option>";
                     }
                     $echo .= "</select>";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
 
-                case 'skin': $echo  = "<select name='{$name}' id='{$id}' class='skin' data-path='{$field['path']}'>";
-                    foreach( $field['options'] as $v=>$label ) {
-                        $echo .= "<option value='{$v}'". selected($value, $v, false) .">{$label}</option>";
+                case 'skin':
+                    $echo = "<select name='{$name}' id='{$id}' class='skin' data-path='{$field['path']}'>";
+                    foreach ( $field['options'] as $v => $label ) {
+                        $echo .= "<option value='{$v}'" . selected( $value, $v, false ) . ">{$label}</option>";
                     }
                     $echo .= "</select>";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p><div class='skin-preview'></div>";
                     }
                     break;
 
                 case 'number':
                     $mms = '';
-                    if( isset( $field['min'] ) ) {
+                    if ( isset( $field['min'] ) ) {
                         $mms .= " min='{$field['min']}'";
                     }
 
-                    if( isset( $field['max'] ) ) {
+                    if ( isset( $field['max'] ) ) {
                         $mms .= " max='{$field['max']}'";
                     }
 
-                    if( isset( $field['step'] ) ) {
+                    if ( isset( $field['step'] ) ) {
                         $mms .= " step='{$field['step']}'";
                     }
 
                     $echo = "<input type='number' id='{$id}' name='{$name}' value='{$value}' class='small-text' {$mms} />";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
@@ -394,29 +404,29 @@ if( !class_exists('YITH_Panel') ) {
                     $std = isset( $field['std'] ) ? $field['std'] : '';
 
                     $echo = "<input type='text' id='{$id}' name='{$name}' value='{$value}' class='medium-text code panel-colorpicker' data-default-color='{$std}' />";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
 
                 case 'datepicker':
-                    $std = isset( $field['std'] ) ? $field['std'] : array( 'date' => '', 'hh' => 0, 'mm' => 0, 'ss' => 0 );
+                    $std   = isset( $field['std'] ) ? $field['std'] : array( 'date' => '', 'hh' => 0, 'mm' => 0, 'ss' => 0 );
                     $value = ! empty( $value ) ? $value : array( 'date' => '', 'hh' => 0, 'mm' => 0, 'ss' => 0 );
 
-                    $echo  = "<input type='text' id='{$id}_date' name='{$name}[date]' value='{$value['date']}' class='medium-text code panel-datepicker' colorpicker='" . __( 'Select a date', 'yit' ) . "' /> - ";
+                    $echo = "<input type='text' id='{$id}_date' name='{$name}[date]' value='{$value['date']}' class='medium-text code panel-datepicker' colorpicker='" . __( 'Select a date', 'yit' ) . "' /> - ";
                     $echo .= "<input type='text' id='{$id}_hh' name='{$name}[hh]' value='{$value['hh']}' class='small-text code' colorpicker='" . __( 'Hours', 'yit' ) . "' /> : ";
                     $echo .= "<input type='text' id='{$id}_mm' name='{$name}[mm]' value='{$value['mm']}' class='small-text code' colorpicker='" . __( 'Minutes', 'yit' ) . "' /> : ";
                     $echo .= "<input type='text' id='{$id}_ss' name='{$name}[ss]' value='{$value['ss']}' class='small-text code' colorpicker='" . __( 'Minutes', 'yit' ) . "' />";
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
 
                 case 'upload':
-                    $echo  = '<div class="uploader">';
-                    $echo .= "  <input type='text' id='{$id}' name='{$name}' value='{$value}' class='regular-text code' /> <input type='button' name='' id='{$id}_button' class='button' value='". __('Upload', 'yit') ."'>";
+                    $echo = '<div class="uploader">';
+                    $echo .= "  <input type='text' id='{$id}' name='{$name}' value='{$value}' class='regular-text code' /> <input type='button' name='' id='{$id}_button' class='button' value='" . __( 'Upload', 'yit' ) . "'>";
                     $echo .= '</div>';
-                    if( isset($field['description']) && $field['description'] != '' ) {
+                    if ( isset( $field['description'] ) && $field['description'] != '' ) {
                         $echo .= "<p class='description'>{$field['description']}</p>";
                     }
                     break;
@@ -424,18 +434,26 @@ if( !class_exists('YITH_Panel') ) {
                 case 'checkboxes':
                     $echo = '<div class="checkboxes">';
                     foreach ( $field['options'] as $check_value => $check_label ) {
-                        $echo .= "<label><input type='checkbox' id='{$id}_{$check_value}' name='{$name}[]' value='$check_value' ". checked( in_array( $check_value, $value ), true, false) ." /> {$check_label}</label><br />";
+                        $echo .= "<label><input type='checkbox' id='{$id}_{$check_value}' name='{$name}[]' value='$check_value' " . checked( in_array( $check_value, $value ), true, false ) . " /> {$check_label}</label><br />";
                     }
 
                     $echo .= " <p class='description'>{$field['description']}</p>";
                     break;
 
-                case 'typography': $value = wp_parse_args( $value, $field['std'] ); ?>
+                case 'typography':
+                    $value = wp_parse_args( $value, $field['std'] ); ?>
                     <div class="typography_container typography">
                         <div class="option">
                             <!-- Size -->
                             <div class="spinner_container">
-                                <input class="typography_size number small-text" type="number" name="<?php echo $name ?>[size]" id="<?php echo $id ?>-size" value="<?php echo $value['size'] ?>" data-min="<?php if(isset( $field['min'] )) echo $field['min'] ?>" data-max="<?php if(isset( $field['max'] )) echo $field['max'] ?>" />
+                                <input class="typography_size number small-text" 
+                                       type="number" 
+                                       name="<?php echo $name ?>[size]" 
+                                       id="<?php echo $id ?>-size" 
+                                       value="<?php echo $value['size'] ?>" 
+                                       data-min="<?php if ( isset( $field['min'] ) ) echo $field['min']; ?>" 
+                                       data-max="<?php if ( isset( $field['max'] ) ) echo $field['max']; ?>" 
+                                />
                             </div>
 
                             <!-- Unit -->
@@ -451,10 +469,10 @@ if( !class_exists('YITH_Panel') ) {
                             <!-- Family -->
                             <div class="select-wrapper font-family">
                                 <select class="typography_family" name="<?php echo $name ?>[family]" id="<?php echo $id ?>-family" data-instance="false">
-                                    <?php if( $value['family'] ): ?>
+                                    <?php if ( $value['family'] ): ?>
                                         <option value="<?php echo stripslashes( $value['family'] ) ?>"><?php echo $value['family'] ?></option>
                                     <?php else: ?>
-                                        <option value=""><?php _e('Select a font family', 'yit') ?></option>
+                                        <option value=""><?php _e( 'Select a font family', 'yit' ) ?></option>
                                     <?php endif ?>
                                 </select>
                             </div>
@@ -478,16 +496,18 @@ if( !class_exists('YITH_Panel') ) {
                         <div class="font-preview">
                             <p>The quick brown fox jumps over the lazy dog</p>
                             <!-- Refresh -->
-                            <div class="refresh_container"><button class="refresh"><?php _e( 'Click to preview', 'yit' ) ?></button></div>
+                            <div class="refresh_container">
+                                <button class="refresh"><?php _e( 'Click to preview', 'yit' ) ?></button>
+                            </div>
                         </div>
                     </div>
                     <?php
-                        global $yith_panel_if_typography;
-                        $yith_panel_if_typography = true;
+                    global $yith_panel_if_typography;
+                    $yith_panel_if_typography = true;
                     break;
 
                 default:
-                    do_action('yith_panel_field_' . $field['type']);
+                    do_action( 'yith_panel_field_' . $field['type'] );
                     break;
             }
 
@@ -501,7 +521,9 @@ if( !class_exists('YITH_Panel') ) {
          * @return void
          */
         public function printBanner() {
-            if( !$this->banner_url || !$this->banner_img ) return;
+            if ( ! $this->banner_url || ! $this->banner_img ) {
+                return;
+            }
             ?>
             <div class="yith_banner">
                 <a href="<?php echo $this->banner_url ?>" target="_blank">
