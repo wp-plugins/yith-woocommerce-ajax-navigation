@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page.
-WooCommerce Compatible up to 2.1.x
+WooCommerce Compatible up to 2.2.x
 
 
 == Description ==
