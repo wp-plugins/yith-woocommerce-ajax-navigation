@@ -82,12 +82,12 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
                     // Get count based on current view - uses transients
                     $transient_name = 'wc_ln_count_' . md5( sanitize_key( $taxonomy ) . sanitize_key( $term->term_id ) );
 
-                    if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
+                    //if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
 
                         $_products_in_term = get_objects_in_term( $term->term_id, $taxonomy );
 
                         set_transient( $transient_name, $_products_in_term );
-                    }
+                    //}
 
                     $option_is_set = ( isset( $_chosen_attributes[$taxonomy] ) && in_array( $term->term_id, $_chosen_attributes[$taxonomy]['terms'] ) );
 
@@ -254,12 +254,12 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
                     // Get count based on current view - uses transients
                     $transient_name = 'wc_ln_count_' . md5( sanitize_key( $taxonomy ) . sanitize_key( $term->term_id ) );
 
-                    if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
+                    //if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
 
                         $_products_in_term = get_objects_in_term( $term->term_id, $taxonomy );
 
                         set_transient( $transient_name, $_products_in_term );
-                    }
+                    //}
 
                     $option_is_set = ( isset( $_chosen_attributes[$taxonomy] ) && in_array( $term->term_id, $_chosen_attributes[$taxonomy]['terms'] ) );
 
@@ -417,12 +417,12 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
                     // Get count based on current view - uses transients
                     $transient_name = 'wc_ln_count_' . md5( sanitize_key( $taxonomy ) . sanitize_key( $term->term_id ) );
 
-                    if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
+                    //if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
 
                         $_products_in_term = get_objects_in_term( $term->term_id, $taxonomy );
 
                         set_transient( $transient_name, $_products_in_term );
-                    }
+                    //}
 
                     $option_is_set = ( isset( $_chosen_attributes[$taxonomy] ) && in_array( $term->term_id, $_chosen_attributes[$taxonomy]['terms'] ) );
 
@@ -577,12 +577,12 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
                     // Get count based on current view - uses transients
                     $transient_name = 'wc_ln_count_' . md5( sanitize_key( $taxonomy ) . sanitize_key( $term->term_id ) );
 
-                    if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
+                    //if ( false === ( $_products_in_term = get_transient( $transient_name ) ) ) {
 
                         $_products_in_term = get_objects_in_term( $term->term_id, $taxonomy );
 
                         set_transient( $transient_name, $_products_in_term );
-                    }
+                    //}
 
                     $option_is_set = ( isset( $_chosen_attributes[$taxonomy] ) && in_array( $term->term_id, $_chosen_attributes[$taxonomy]['terms'] ) );
 

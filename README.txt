@@ -66,6 +66,10 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 
 == Changelog ==
 
+= 1.4.1 =
+
+* Fixed: Wrong attribute show with WooCommerce 2.2
+
 = 1.4.0 =
 
 * Added: Support to WC 2.2
