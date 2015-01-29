@@ -20,7 +20,7 @@ With Color display type you're able to assign a color (selected from a Color Pic
 Working demos are available here:
 **[LIVE DEMO 1](http://preview.yithemes.com/room09/shop/)** - **[LIVE DEMO 2](http://preview.yithemes.com/bazar/shop/)**
 
-Full documentation is available [here](http://yithemes.com/docs-plugins/yith_ajax_navigation/).
+Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 
 = Installation =
@@ -33,7 +33,7 @@ The widget works with Product Attributes. This means you need to create the Attr
 
 = Developer =
 
-Are you a developer? Want to customize the templates or the style of the plugin? Read on the [documentation](http://yithemes.com/docs-plugins/yith_ajax_navigation/) and discover how to do that.
+Are you a developer? Want to customize the templates or the style of the plugin? Read on the [documentation](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/) and discover how to do that.
 
 = Support =
 
@@ -137,7 +137,7 @@ If you have created your own language pack, or have an update for an existing on
 
 == Documentation ==
 
-Full documentation is available [here](http://yithemes.com/docs-plugins/yith_ajax_navigation/).
+Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 == Upgrade notice ==
 
