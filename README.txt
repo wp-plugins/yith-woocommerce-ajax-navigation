@@ -1,70 +1,79 @@
-=== YITH WooCommerce Ajax Navigation ===
+=== YITH WooCommerce Ajax Product Filter ===
 
 Contributors: yithemes
-Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation
-Requires at least: 3.5.1
-Tested up to: 4.1
-Stable tag: 1.4.1
+Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort 
+Requires at least: 4.0
+Tested up to: 4.2.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page.
-WooCommerce Compatible up to 2.2.x
-
+YITH WooCommerce Ajax Product Filter offers the perfect way to search among all the products of your shop.
 
 == Description ==
 
-YITH WooCommerce Ajax Navigation allows you to filter the products in the Shop page without reloading the page. The plugin also includes four new types of Product Attributes visualizations: Color, Label, List and Dropdown.
-With Color display type you're able to assign a color (selected from a Color Picker) to each Product Attributes. With Label Color display you're able to assign a label (3 chars max) to your Product Attributes. With List display your products attributes in a list. With Dropdown you're able to display your products attributes like a select.
+= Search for the exact product you are looking for =
+
+A powerful plugin: YITH WooCommerce Ajax Product Filter lets you apply the filters you need to display the correct variations of the products you are looking for.
+Choose among color, label, list and dropdown and your research will display those precise products that suit perfectly your needs.
+An extremely helpful plugin to help customers find what they really want.
+
 
 Working demos are available here:
 **[LIVE DEMO 1](http://preview.yithemes.com/room09/shop/)** - **[LIVE DEMO 2](http://preview.yithemes.com/bazar/shop/)**
 
-Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
+Full documentation is available [here](http://yithemes.com/docs-plugins/yith-woocommerce-ajax-product-filter/).
 
+**Main Features:**
 
-= Installation =
-
-Once you have installed the plugin, you just need to activate the plugin in order to enable it.
-
-= Configuration =
-
-The widget works with Product Attributes. This means you need to create the Attributes and to assign them to your products. Once you have customized your products with Product Attributes you're able to use the Widget.
-
-= Developer =
-
-Are you a developer? Want to customize the templates or the style of the plugin? Read on the [documentation](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/) and discover how to do that.
-
-= Support =
-
-Hi there, we have good news here: all our plugins are released for free. Wow!
-Already knew it, right?! Great, but maybe you do not know that: if you're looking for how to install the plugins or how to use them within your Wordpress installations, which is the right way to ask support?
-That's the way:
-
-* Register on http://yithemes.com
-* Go to Support > Get Support
-
-Here we provide support, not on wordpress.org were, usually we do not read topics. It's better to follow us or write on our forum!
+* Filter products with the YITH WooCommerce Ajax Product Filter widget (4 layouts)
+ * List
+ * Dropdown
+ * Color
+ * Label
+* Reset all the applied filters with TITH WooCommerce Ajax Reset Filter widget
 
 == Installation ==
 
 1. Unzip the downloaded zip file.
 2. Upload the plugin folder into the `wp-content/plugins/` directory of your WordPress site.
-3. Activate `YITH WooCommerce Ajax Navigation` from Plugins page
+3. Activate `YITH WooCommerce Ajax Product Filter` from Plugins page
 
 == Frequently Asked Questions ==
 
-= The widget is not displayed in my sidebar. Why? =
-In order to display the widget you need to assign it to the sidebar in the Shop page and you need to add Product Attributes to your product. Read the Getting Started section to learn how to add them.
+= Why isn't the widget displayed in my sidebar? =
+In order to display the widget, you need to assign it to the sidebar in the Shop page, and you also need to add Product Attributes to your product. Read the Getting Started section to learn how to add them.
+
+= Translation issue with the latest version =
+Dear users,
+we would like to inform you that the YITH WooCommerce Ajax Navigation plugin will change its name in YITH WooCommerce Ajax Product Filter from the next update.
+In addition to the name, with the new release the plugin textdomain will change too from "yit" to "yith_wc_ajxnav".
+This modification solves the issues about textdomain conflicts generated by some translation/multilanguage plugins you have identified in the past weeks.
+It may be possible that, updating the plugin, some language files will not be recognized by WordPress. In this case, you will just have to rename the language files in the correct format, changing the old textdomain with the new one.
+For example, if your language files were named yit-en_GB.po and yit-en_GB.mo, you will just have to rename them respectively in yith_wc_ajxnav-en_GB.po and yith_wc_ajxnav-en_GB.mo.
+After renaming the files, you can update/translate the .po file following the classic procedure for translations.
 
 == Screenshots ==
 
-1. The widget in action with "Color" type selected
-2. The widget in action with "Label" type selected
-3. The widget in action with "Dropdown" type selected
-4. The final result
+1. Admin - Appearance -> Widget: Filter Widget List Style
+2. Admin - Appearance -> Widget: Filter Widget Color Style
+3. Admin - Appearance -> Widget: Filter Widget Label Style
+4. Admin - Appearance -> Widget: Filter Widget Dropdown Style
+5. Admin - Appearance -> Widget: Filter Reset Button
+6. Frontend: Widget in sidebar
+7. Frontend: Dropdown style
+8. Frontend: Reset button and active filters
 
 == Changelog ==
+
+= 2.0.0 =
+
+* Tweak: Plugin core framework
+* Updated: Languages file
+* Fixed: Prevent warning issue with no set color/label
+* Fixed: Textdomain conflict
+* Fixed: Filter doesn't work if shop page is on front
+* Removed: old default.po catalog language file
 
 = 1.4.1 =
 
@@ -122,10 +131,6 @@ In order to display the widget you need to assign it to the sidebar in the Shop 
 
 * Initial release
 
-== Suggestions ==
-
-If you have suggestions about how to improve YITH WooCommerce Ajax Navigation, you can [write us](mailto:plugins@yithemes.com "Your Inspiration Themes") so we can bundle them into YITH WooCommerce Ajax Navigation.
-
 == Translators ==
 
 = Available Languages =
@@ -140,6 +145,10 @@ If you have created your own language pack, or have an update for an existing on
 Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 == Upgrade notice ==
+
+= 2.0.0 =
+
+New plugin core added.
 
 = 1.0.0 =
 

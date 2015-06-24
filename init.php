@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: YITH WooCommerce Ajax Navigation
+ * Plugin Name: YITH WooCommerce Ajax Product Filter
  * Plugin URI: http://yithemes.com/
  * Description: YITH WooCommerce Ajax Navigation allows user to filter products in Shop page without reloading the page.
- * Version: 1.4.1
- * Author: Your Inspiration Themes
+ * Version: 2.0.0
+ * Author: yithemes
  * Author URI: http://yithemes.com/
- * Text Domain: yit
+ * Text Domain: yith_wc_ajxnav
  * Domain Path: /languages/
  *
  * @author  Your Inspiration Themes
@@ -32,38 +32,74 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-/**
- * Required functions
- */
-if ( ! defined( 'YITH_FUNCTIONS' ) ) {
-    require_once( 'yit-common/yit-functions.php' );
-}
-
-function yith_wcan_constructor() {
-    global $woocommerce;
-    if ( ! isset( $woocommerce ) ) {
-        return;
+if( ! function_exists( 'install_premium_woocommerce_admin_notice' ) ) {
+    /**
+     * Print an admin notice if woocommerce is deactivated
+     *
+     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     * @since 1.0
+     * @return void
+     * @use admin_notices hooks
+     */
+    function install_premium_woocommerce_admin_notice() { ?>
+        <div class="error">
+            <p><?php _e( 'YITH WooCommerce Ajax Product Filter is enabled but not effective. It requires WooCommerce in order to work.', 'yith_wc_ajxnav' ); ?></p>
+        </div>
+        <?php
     }
-
-    load_plugin_textdomain( 'yit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-    define( 'YITH_WCAN', true );
-    define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
-    define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
-    define( 'YITH_WCAN_VERSION', '1.4.1' );
-
-    // Load required classes and functions
-    require_once( 'functions.yith-wcan.php' );
-    require_once( 'class.yith-wcan-admin.php' );
-    require_once( 'class.yith-wcan-frontend.php' );
-    require_once( 'class.yith-wcan-helper.php' );
-    require_once( 'widgets/class.yith-wcan-navigation-widget.php' );
-    require_once( 'widgets/class.yith-wcan-reset-navigation-widget.php' );
-    require_once( 'class.yith-wcan.php' );
-
-    // Let's start the game!
-    global $yith_wcan;
-    $yith_wcan = new YITH_WCAN();
 }
 
-add_action( 'plugins_loaded', 'yith_wcan_constructor' );
+//Check if WooCommerce is active
+if ( ! function_exists( 'WC' ) ) {
+    add_action( 'admin_notices', 'install_premium_woocommerce_admin_notice' );
+    return;
+}
+
+load_plugin_textdomain( 'yith_wc_ajxnav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+//Stop activation if the premium version of the same plugin is still active
+if ( defined( 'YITH_WCAN_VERSION' ) ) {
+    return;
+}
+
+! defined( 'YITH_WCAN' )            && define( 'YITH_WCAN', true );
+! defined( 'YITH_WCAN_URL' )        && define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
+! defined( 'YITH_WCAN_DIR' )        && define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
+! defined( 'YITH_WCAN_VERSION' )    && define( 'YITH_WCAN_VERSION', '2.0.0' );
+! defined( 'YITH_WCAN_FREE_INIT')   && define( 'YITH_WCAN_FREE_INIT', plugin_basename( __FILE__ ) );
+! defined( 'YITH_WCAN_FILE' )       && define( 'YITH_WCAN_FILE', __FILE__ );
+
+
+/**
+ * Init default plugin settings
+ */
+if ( ! function_exists( 'yith_plugin_registration_hook' ) ) {
+    require_once 'plugin-fw/yit-plugin-registration-hook.php';
+}
+
+if ( ! function_exists( 'YITH_Vendors' ) ) {
+    /**
+     * Unique access to instance of YITH_Vendors class
+     *
+     * @return YITH_Vendors|YITH_Vendors_Premium
+     * @since 1.0.0
+     */
+    function YITH_WCAN() {
+        // Load required classes and functions
+        require_once( YITH_WCAN_DIR . 'includes/class.yith-wcan.php' );
+
+        if ( defined( 'YITH_WCAN_PREMIUM' ) && file_exists( YITH_WCAN_DIR . 'includes/class.yith-wcan-premium.php' ) ) {
+            require_once( YITH_WCAN_DIR . 'includes/class.yith-wcan-premium.php' );
+            return YITH_WCAN_Premium::instance();
+        }
+        return YITH_WCAN::instance();
+    }
+}
+
+/**
+ * Instance main plugin class
+ */
+global $yith_wcan;
+$yith_wcan = YITH_WCAN();
+
+register_activation_hook( YITH_WCAN_FILE, 'yith_plugin_registration_hook' );

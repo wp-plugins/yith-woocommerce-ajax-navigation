@@ -32,6 +32,7 @@
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
+    box-sizing: content-box;
 }
 
 .woocommerce .widget_layered_nav ul.yith-wcan-color li a:hover,
@@ -168,6 +169,84 @@
 
 .yith-wcan-select-wrapper ul.yith-wcan-select.yith-wcan li.yit-wcan-child-terms {
     padding-left: 30px;
+}
+
+/* widget dropdown */
+.widget h3.with-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+.widget h3.with-dropdown .widget-dropdown {
+    border: none;
+    width: 22px;
+    height: 22px;
+    background: url(../images/select-arrow.png) top 0px right no-repeat;
+    background-size: 95% !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.widget h3.with-dropdown.open .widget-dropdown {
+    background-position: bottom 15px right;
+}
+
+/* === Sort By === */
+
+.yith-wcan-sort-by ul.orderby {
+  list-style: none;
+  padding: 0;
+}
+
+.yith-wcan-sort-by ul.orderby li.orderby-wrapper {
+    margin-bottom: 5px;
+}
+
+.yith-wcan-sort-by ul.orderby li.orderby-wrapper a.active:before,
+a.yith-wcan-onsale-button.active:before,
+a.yith-wcan-instock-button.active:before,
+a.yith-wcan-price-link.active:before {
+    font-family: WooCommerce;
+    speak: none;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1;
+    content:"";
+    color: #a00;
+    margin-right: .618em;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a.multicolor {
+    position: relative;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a span.multicolor {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a span.multicolor.color-1{
+    border-width: 20px 20px 0 0;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a span.multicolor.color-2{
+    border-width: 0 0 20px 20px;
+}
+
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a.multicolor.round {
+    border-radius: 50%;
+}
+.woocommerce .widget_price_filter .price_slider_amount #min_price.yith_wcan_no_slider,
+.woocommerce .widget_price_filter .price_slider_amount #max_price.yith_wcan_no_slider {
+    margin-bottom: 10px;
 }
 
 
