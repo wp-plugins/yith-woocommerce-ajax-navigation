@@ -66,7 +66,7 @@ After renaming the files, you can update/translate the .po file following the cl
 
 == Changelog ==
 
-= 2.0.1=
+= 2.0.1 =
 
 * Fixed: Unable to active plugin
 
