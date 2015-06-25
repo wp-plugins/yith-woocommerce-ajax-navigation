@@ -250,15 +250,18 @@ if( !class_exists( 'YITH_WCAN_Admin' ) ) {
 
             $plugin_name = __( 'YITH WooCommerce Ajax Product Filter', 'yith_wc_ajxnav' );
 
+            $premium_message = sprintf('%s, <a href="%s" target"_blank">%s</a>.',  __('YITH WooCommerce Product Filter has been updated with new available options', 'yith_wc_ajxnav' ), $this->_premium_landing, __( 'discover the PREMIUM version', 'yith_wc_ajxnav' )  );
+
             $args = array();
             foreach ( array( 'plugins', 'update' ) as $screen ) {
                 $args[] = array(
                     'screen_id'  => $screen,
                     'pointer_id' => 'yith_wcan_panel',
                     'target'     => '#toplevel_page_yit_plugin_panel',
-                    'content'    => sprintf( '<h3> %s </h3> <p> %s </p>',
+                    'content'    => sprintf( '<h3> %s </h3> <p> %s </p> <p>%s</p>',
                         $plugin_name,
-                        $message
+                        $message,
+                        $premium_message
                     ),
                     'position'   => array( 'edge' => 'left', 'align' => 'center' ),
                     'init'       => YITH_WCAN_FREE_INIT

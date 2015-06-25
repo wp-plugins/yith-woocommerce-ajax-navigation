@@ -69,7 +69,7 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
 
             ob_start();
 
-            $found = true;
+            $found = false;
 
             echo $before_widget;
 
