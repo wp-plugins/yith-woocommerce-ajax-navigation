@@ -22,6 +22,7 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
     function __construct() {
         $widget_ops  = array( 'classname' => 'yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Filter the product list without reloading the page', 'yith_wc_ajxnav' ) );
         $control_ops = array( 'width' => 400, 'height' => 350 );
+        add_action('wp_ajax_yith_wcan_select_type', array( $this, 'ajax_print_terms') );
         parent::__construct( 'yith-woo-ajax-navigation', __( 'YITH WooCommerce Ajax Product Filter', 'yith_wc_ajxnav' ), $widget_ops, $control_ops );
     }
 
@@ -859,6 +860,52 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
 
         return $instance;
     }
+
+ /**
+         * Print terms for the element selected
+         *
+         * @access public
+         * @return void
+         * @since 1.0.0
+         */
+        public function ajax_print_terms() {
+            $type      = $_POST['value'];
+            $attribute = $_POST['attribute'];
+            $return    = array( 'message' => '', 'content' => $_POST );
+
+            $terms = get_terms( 'pa_' . $attribute, array( 'hide_empty' => '0' ) );
+
+            $settings        = $this->get_settings();
+            $widget_settings = $settings[ $this->number ];
+            $value           = '';
+
+            if( 'label' == $type ){
+                $value = $widget_settings['labels'];
+            }
+
+            elseif( 'color' == $type ){
+                $value = $widget_settings['colors'];
+            }
+
+            elseif( 'multicolor' == $type ) {
+                $value = $widget_settings['multicolor'];
+            }
+
+            if ( $type ) {
+                $return['content'] = yith_wcan_attributes_table(
+                    $type,
+                    $attribute,
+                    $_POST['id'],
+                    $_POST['name'],
+                    $value,
+                    false
+                );
+            }
+
+
+            echo json_encode( $return );
+            die();
+        }
 
 }
 }

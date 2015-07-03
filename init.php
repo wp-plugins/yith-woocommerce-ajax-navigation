@@ -2,8 +2,8 @@
 /**
  * Plugin Name: YITH WooCommerce Ajax Product Filter
  * Plugin URI: http://yithemes.com/
- * Description: YITH WooCommerce Ajax Navigation allows user to filter products in Shop page without reloading the page.
- * Version: 2.0.2
+ * Description: YITH WooCommerce Ajax Product Filter offers the perfect way to filter all the products of your shop.
+ * Version: 2.0.3
  * Author: yithemes
  * Author URI: http://yithemes.com/
  * Text Domain: yith_wc_ajxnav
@@ -65,7 +65,7 @@ if ( defined( 'YITH_WCAN_VERSION' ) ) {
 ! defined( 'YITH_WCAN' )            && define( 'YITH_WCAN', true );
 ! defined( 'YITH_WCAN_URL' )        && define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
 ! defined( 'YITH_WCAN_DIR' )        && define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
-! defined( 'YITH_WCAN_VERSION' )    && define( 'YITH_WCAN_VERSION', '2.0.2' );
+! defined( 'YITH_WCAN_VERSION' )    && define( 'YITH_WCAN_VERSION', '2.0.3' );
 ! defined( 'YITH_WCAN_FREE_INIT')   && define( 'YITH_WCAN_FREE_INIT', plugin_basename( __FILE__ ) );
 ! defined( 'YITH_WCAN_FILE' )       && define( 'YITH_WCAN_FILE', __FILE__ );
 

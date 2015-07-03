@@ -4,15 +4,15 @@ Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort, woocommerce ajax product filter, advanced product filters, ajax product filters, filters, woocommerce ajax product filters, woocommerce product filters, woocommerce product filters, category filter, attribute filters, woocommerce products filter, woocommerce price filter, yit, yith, yithemes
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-YITH WooCommerce Ajax Product Filter offers the perfect way to search among all the products of your shop.
+YITH WooCommerce Ajax Product Filter offers the perfect way to filter all the products of your shop.
 
 == Description ==
 
-= Search for the exact product you are looking for =
+= Filter for the exact product you are looking for =
 
 A powerful plugin: YITH WooCommerce Ajax Product Filter lets you apply the filters you need to display the correct variations of the products you are looking for.
 Choose among color, label, list and dropdown and your research will display those precise products that suit perfectly your needs.
@@ -65,6 +65,11 @@ After renaming the files, you can update/translate the .po file following the cl
 8. Frontend: Reset button and active filters
 
 == Changelog ==
+
+= 2.0.3 =
+
+* Added: Support to Sortable attribute
+* Fixed: Color lost after change widget style
 
 = 2.0.2 =
 
