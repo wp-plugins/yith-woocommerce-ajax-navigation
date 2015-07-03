@@ -1,0 +1,108 @@
+/* widget area */
+.yith_wcan_placeholder + .spinner {
+    background-position: center;
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.yith_wcan_placeholder table {
+    width: 100%;
+}
+
+.yith_wcan_placeholder th {
+    text-align: left;
+}
+
+.yith_wcan_placeholder td {
+    vertical-align: middle;
+}
+
+p.yit-wcan-display-label,
+p.yit-wcan-display-color,
+p#yit-wcan-style,
+p#yit-wcan-show-count,
+p.yit-wcan-display-tags,
+p.yit-wcan-display-brands {
+    display: none;
+}
+
+p#yit-wcan-style.yit-wcan-style-color,
+p#yit-wcan-style.yit-wcan-style-multicolor,
+p#yit-wcan-show-count.yit-wcan-show-count-list,
+p#yit-wcan-show-count.yit-wcan-show-count-brands,
+p#yit-wcan-show-count.yit-wcan-show-count-tags{
+    display: block;
+}
+
+label.yith-wcan-reset-table{
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Options Panel Customizzation */
+
+.plugin-option .form-table tr {
+    background-color: #ffffff;
+    border: none;
+}
+
+.plugin-option .form-table tr th {
+    padding: 20px 10px 20px 20px;
+}
+
+.yith_wcan_placeholder .wp-picker-holder {
+  position: absolute;
+  z-index: 999;
+}
+
+.yith-wcan-multicolor .wp-picker-container .wp-picker-clear {
+  display: none;
+}
+
+/* == Panel Customization === */
+
+.yit-plugins_page_yith_wcan_panel .plugin-option{
+    margin-right: 15px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options .option {
+    width: 270px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options.on_off_container .option {
+    width: 100px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .yit-options .option, .plugin-option .yit_options.on_off_container .description {
+    line-height: 38px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .form-table tr th {
+    width: 240px;
+}
+
+.yit-plugins_page_yith_wcan_panel .plugin-option .form-table tr th label {
+    line-height: 45px;
+}
+
+div#yit_wcan_options_yith_wcan_dropdown_style-container .select_wrapper {
+  width: 220px;
+}
+
+input.yith-wcan-price-filter-input.widefat {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+.yith-wcan-price-filter label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.yith-add-new-range-button {
+    margin-bottom: 15px;
+}
