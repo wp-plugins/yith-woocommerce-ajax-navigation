@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Ajax Product Filter\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-19 13:59+0100\n"
+"PO-Revision-Date: 2015-06-19 13:59+0100\n"
+"Last-Translator: Your Inspiration Themes <plugins@yithemes.com>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: ../plugin-fw\n"
+
+# @ yit
+#: functions.yith-wcan.php:56 functions.yith-wcan.php:69
+msgid "Term"
+msgstr ""
+
+# @ yit
+#: functions.yith-wcan.php:56
+#: widgets/class.yith-wcan-navigation-widget.php:784
+msgid "Color"
+msgstr ""
+
+# @ yit
+#: functions.yith-wcan.php:69
+msgid "Labels"
+msgstr ""
+
+#: init.php:46
+msgid ""
+"YITH WooCommerce Ajax Product Filter is enabled but not effective. It "
+"requires Woocommerce in order to work."
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:23
+msgid "Narrow down the products list without reloading the page"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:25
+msgid "YITH WooCommerce Ajax Navigation"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:260
+msgid "Filters List:"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:783
+msgid "List"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:785
+msgid "Label"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:786
+msgid "Dropdown"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:793
+#: widgets/class.yith-wcan-reset-navigation-widget.php:89
+msgid "Title"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:799
+msgid "Type:"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:808
+msgid "Query Type:"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:810
+msgid "AND"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:811
+msgid "OR"
+msgstr ""
+
+# @ yit
+#: widgets/class.yith-wcan-navigation-widget.php:815
+msgid "Attribute:"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:822
+msgid "Display (default All):"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:824
+msgid "All (no hierarchical)"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:825
+msgid "All Hierarchical"
+msgstr ""
+
+#: widgets/class.yith-wcan-navigation-widget.php:826
+msgid "Only Parent"
+msgstr ""
+
+#: widgets/class.yith-wcan-reset-navigation-widget.php:23
+msgid "Reset all filters setted by YITH WooCommerce Ajax Navigation"
+msgstr ""
+
+#: widgets/class.yith-wcan-reset-navigation-widget.php:25
+msgid "YITH WooCommerce Ajax Reset Navigation"
+msgstr ""
+
+#: widgets/class.yith-wcan-reset-navigation-widget.php:82
+msgid "Reset All Filters"
+msgstr ""
+
+#: widgets/class.yith-wcan-reset-navigation-widget.php:95
+msgid "Button Label"
+msgstr ""
