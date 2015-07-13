@@ -34,7 +34,7 @@ class YITH_WCAN_Navigation_Widget extends WP_Widget {
 
         $attributes_array = ! empty( $_attributes_array ) ? $_attributes_array : array();
 
-        if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, array( 'product_cat', 'product_tag' ) ) ) ) {
+        if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, apply_filters( 'yith_wcan_product_taxonomy_type', array( 'product_cat', 'product_tag' ) ) ) ) ) {
             return;
         }
 
