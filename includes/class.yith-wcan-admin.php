@@ -31,6 +31,11 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
         protected $_panel;
 
         /**
+         * @var string Main Panel Option
+         */
+        protected $_main_panel_option;
+
+        /**
          * @var string The panel page
          */
         protected $_panel_page = 'yith_wcan_panel';
@@ -112,33 +117,6 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
         }
 
         /**
-         * Print terms for the element selected
-         *
-         * @access public
-         * @return void
-         * @since 1.0.0
-         */
-        public function ajax_print_terms() {
-            $type      = $_POST['value'];
-            $attribute = $_POST['attribute'];
-            $return    = array( 'message' => '', 'content' => $_POST );
-
-            $terms = get_terms( 'pa_' . $attribute, array( 'hide_empty' => '0' ) );
-
-            $return['content'] = yith_wcan_attributes_table(
-                $type,
-                $attribute,
-                $_POST['id'],
-                $_POST['name'],
-                json_decode( $_POST['value'] ),
-                false
-            );
-
-            echo json_encode( $return );
-            die();
-        }
-
-        /**
          * Add a panel under YITH Plugins tab
          *
          * @return   void
@@ -147,7 +125,6 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
          * @use     /Yit_Plugin_Panel class
          * @see      plugin-fw/lib/yit-plugin-panel.php
          */
-
         public function register_panel() {
 
             if ( ! empty( $this->_panel ) ) {
@@ -178,6 +155,9 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
             }
 
             $this->_panel = new YIT_Plugin_Panel( $args );
+            $this->_main_panel_option = "yit_{$args['parent']}_options";
+
+            do_action( 'yith_wcan_after_option_panel', $args );
         }
 
         public function premium_tab() {
@@ -198,11 +178,11 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
          * @use plugin_action_links_{$plugin_file_name}
          */
         public function action_links( $links ) {
-            $premium_live_text = defined( 'YITH_WCAN_FREE_INIT' ) ? __( 'Premium live demo', 'yith_wc_product_vendors' ) : __( 'Live demo', 'yith_wc_product_vendors' );
+            $premium_live_text = defined( 'YITH_WCAN_FREE_INIT' ) ? __( 'Premium live demo', 'yith_wc_ajxnav' ) : __( 'Live demo', 'yith_wc_ajxnav' );
             $links[]           = '<a href="' . $this->_premium_live . '" target="_blank">' . $premium_live_text . '</a>';
 
             if ( defined( 'YITH_WCAN_FREE_INIT' ) ) {
-                $links[] = '<a href="' . $this->get_premium_landing_uri() . '" target="_blank">' . __( 'Premium Version', 'yith_wc_product_vendors' ) . '</a>';
+                $links[] = '<a href="' . $this->get_premium_landing_uri() . '" target="_blank">' . __( 'Premium Version', 'yith_wc_ajxnav' ) . '</a>';
             }
 
             return $links;
@@ -226,7 +206,7 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
         public function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 
             if ( ( defined( 'YITH_WCAN_INIT' ) && YITH_WCAN_INIT == $plugin_file ) || ( defined( 'YITH_WCAN_FREE_INIT' ) && YITH_WCAN_FREE_INIT == $plugin_file ) ) {
-                $plugin_meta[] = '<a href="' . $this->_official_documentation . '" target="_blank">' . __( 'Plugin Documentation', 'yith_wc_product_vendors' ) . '</a>';
+                $plugin_meta[] = '<a href="' . $this->_official_documentation . '" target="_blank">' . __( 'Plugin Documentation', 'yith_wc_ajxnav' ) . '</a>';
             }
             return $plugin_meta;
         }
@@ -240,6 +220,33 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
          */
         public function get_premium_landing_uri() {
             return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing . '?refer_id=1030585';
+        }
+
+        /**
+         * Print terms for the element selected
+         *
+         * @access public
+         * @return void
+         * @since 1.0.0
+         */
+        public function ajax_print_terms() {
+            $type      = $_POST['value'];
+            $attribute = $_POST['attribute'];
+            $return    = array( 'message' => '', 'content' => $_POST );
+
+            $terms = get_terms( 'pa_' . $attribute, array( 'hide_empty' => '0' ) );
+
+            $return['content'] = yith_wcan_attributes_table(
+                $type,
+                $attribute,
+                $_POST['id'],
+                $_POST['name'],
+                json_decode( $_POST['value'] ),
+                false
+            );
+
+            echo json_encode( $return );
+            die();
         }
 
         public function register_pointer() {

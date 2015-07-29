@@ -31,7 +31,9 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
 
             extract( $args );
 
-            if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( (array) $_attributes_array, array( 'product_cat', 'product_tag' ) ) ) ) {
+            $attributes_array = ! empty( $_attributes_array ) ? $_attributes_array : array();
+
+            if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, apply_filters( 'yith_wcan_product_taxonomy_type', array( 'product_cat', 'product_tag' ) ) ) ) ) {
                 return;
             }
 
@@ -51,12 +53,8 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
                     $taxonomy_filter = str_replace( 'pa_', '', $taxonomy );
                     $link            = remove_query_arg( 'filter_' . $taxonomy_filter, $link );
                 }
-                if ( isset( $_GET['min_price'] ) ) {
-                    $link = remove_query_arg( 'min_price', $link );
-                }
-                if ( isset( $_GET['max_price'] ) ) {
-                    $link = remove_query_arg( 'max_price', $link );
-                }
+
+                $link = remove_query_arg( array( 'min_price', 'max_price', 'product_tag' ), $link );
 
                 $link = apply_filters( 'yith_woocommerce_reset_filter_link', $link );
 

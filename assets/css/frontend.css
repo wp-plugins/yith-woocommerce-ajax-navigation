@@ -177,7 +177,7 @@
     cursor: pointer;
 }
 .widget h3.with-dropdown .widget-dropdown {
-    border: none;
+    border-width: 0;
     width: 22px;
     height: 22px;
     background: url(../images/select-arrow.png) top 0px right no-repeat;

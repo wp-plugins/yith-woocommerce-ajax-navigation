@@ -31,7 +31,8 @@ jQuery(function ($) {
             display     = $(this).parents('.widget-content').find('#yit-wcan-display'),
             style       = $(this).parents('.widget-content').find('#yit-wcan-style'),
             show_count  = $(this).parents('.widget-content').find('#yit-wcan-show-count'),
-            attributes  = $(this).parents('.widget-content').find('.yith-wcan-attribute-list');
+            attributes  = $(this).parents('.widget-content').find('.yith-wcan-attribute-list'),
+            tag_list    = $(this).parents('.widget-content').find('.yit-wcan-widget-tag-list');
 
         var data = {
             action   : 'yith_wcan_select_type',
@@ -67,12 +68,21 @@ jQuery(function ($) {
             attributes.show();
         }
 
+        if( data.value == 'tags' ){
+            tag_list.show();
+        } else {
+            tag_list.hide();
+        }
+
+
         $.post(ajaxurl, data, function (response) {
             spinner.hide();
             container.html(response.content);
             $(document).trigger('yith_colorpicker');
         }, 'json');
     });
+
+    $('.yith_wcan_type').trigger('change');
 
     //color-picker
     $(document).on('yith_colorpicker',function () {
@@ -92,4 +102,31 @@ jQuery(function ($) {
     $(document).on('change', '.yith-wcan-dropdown-check', function(){
         $.select_dropdown( $(this) );
     });
+
+    //Filter By Tag tab
+    var select_all      = $('.yith-wcan-select-option .select-all'),
+        unselect_all    = $('.yith-wcan-select-option .unselect-all'),
+        checklist       = $('.yith_wcan_select_tag'),
+        widget_select   = $('#yith-wcan-tag-widget-select');
+
+    select_all.on('click', function(e){
+        e.preventDefault();
+        $(this).parents( '.yith-wcan-select-option').next('.yith_wcan_select_tag').find('.yith_wcan_tag_list_checkbox').attr( 'checked', true );
+    });
+
+    unselect_all.on('click', function(e){
+        e.preventDefault();
+        $(this).parents( '.yith-wcan-select-option').next('.yith_wcan_select_tag').find('.yith_wcan_tag_list_checkbox').attr( 'checked', false );
+    });
+
+  /*  widget_select.on('yith_wcan_admin_widget_change', function(){
+        $('#' + widget_select.val()).show();
+    });
+
+    widget_select.on('change', function(){
+        $('.option-wrapper').hide();
+        $('#' + widget_select.val()).fadeIn();
+    });
+
+    widget_select.trigger('yith_wcan_admin_widget_change');*/
 });

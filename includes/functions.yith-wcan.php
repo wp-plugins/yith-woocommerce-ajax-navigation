@@ -118,10 +118,6 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
 function yith_wcan_can_be_displayed() {
     global $woocommerce, $_attributes_array;
 
-
-    /*    if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $_attributes_array, array( 'product_cat', 'product_tag' ) ) ) )
-            return false;*/
-
     if ( is_active_widget( false, false, 'yith-woo-ajax-navigation', true ) ) {
         return true;
     }
@@ -225,7 +221,8 @@ if ( ! function_exists( 'yit_get_terms' ) ) {
      */
     function yit_get_terms( $case, $taxonomy, $instance = false ) {
 
-        $exclude = apply_filters( 'yith_wcan_exclude_terms', array() );
+        $exclude = apply_filters( 'yith_wcan_exclude_terms', array(), $instance );
+        $include = apply_filters( 'yith_wcan_include_terms', array(), $instance );
 
         switch ( $case ) {
 
@@ -242,7 +239,7 @@ if ( ! function_exists( 'yit_get_terms' ) ) {
                 break;
 
             default:
-                $args = array( 'hide_empty' => true, 'exclude' => $exclude );
+                $args = array( 'hide_empty' => true, 'exclude' => $exclude, 'include' => $include );
                 if ( 'parent' == $instance['display'] ) {
                     $args['parent'] = false;
                 }
@@ -390,6 +387,10 @@ if ( ! function_exists( 'yit_get_filter_args' ) ) {
             $link = $filter_value['orderby'] = $_GET['orderby'];
         }
 
+        if ( isset( $_GET['product_tag'] ) ) {
+            $link = $filter_value['product_tag'] = urlencode( $_GET['product_tag'] );
+        }
+
         return $filter_value;
     }
 }
@@ -422,4 +423,56 @@ if ( ! function_exists( 'yit_remove_price_filter_query_args' ) ) {
 
         return $filter_value;
     }
+}
+
+if ( ! function_exists( 'yit_get_woocommerce_layered_nav_link' ) ) {
+    /**
+     * Get current layered link
+     *
+     * @return string The new link
+     *
+     * @since    1.4
+     * @author Andrea Grillo <andrea.grillo@yithemes.com>
+     */
+    function yit_get_woocommerce_layered_nav_link() {
+
+        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+            return untrailingslashit( get_post_type_archive_link( 'product' ) );
+        }
+
+        elseif ( is_product_category() ) {
+            return untrailingslashit( get_term_link( get_queried_object()->slug, 'product_cat' ) );
+        }
+
+        else {
+            return untrailingslashit( get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) );
+        }
+
+        return false;
+    }
+}
+
+if ( ! function_exists( 'yit_wcan_localize_terms' ) ) {
+    /**
+     * Get current layered link
+     *
+     * @param $term_id      The term id
+     * @param $taxonomy     The taxonomy name
+     *
+     * @return string The new term_id
+     *
+     * @since    1.4
+     * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+     */
+
+    function yit_wcan_localize_terms( $term_id, $taxonomy ) {
+        /* === WPML Support === */
+        global $sitepress;
+        if ( ! empty( $sitepress ) && function_exists( 'wpml_object_id_filter' ) ) {
+            $term_id = wpml_object_id_filter( $term_id, $taxonomy, true, $sitepress->get_default_language() );
+        }
+
+        return $term_id;
+    }
+
 }

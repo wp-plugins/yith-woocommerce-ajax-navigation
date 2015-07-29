@@ -37,7 +37,6 @@ if ( ! class_exists( 'YITH_WCAN_Frontend' ) ) {
             $this->version = $version;
 
             //Actions
-            add_action( 'init', array( $this, 'init' ) );
             add_action( 'init', array( $this, 'woocommerce_layered_nav_init' ), 99 );
 
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
@@ -45,19 +44,6 @@ if ( ! class_exists( 'YITH_WCAN_Frontend' ) ) {
             // YITH WCAN Loaded
             do_action( 'yith_wcan_loaded' );
         }
-
-
-        /**
-         * Init method:
-         *  - default options
-         *
-         * @access public
-         * @since  1.0.0
-         */
-        public function init() {
-
-        }
-
 
         /**
          * Enqueue frontend styles and scripts
@@ -73,11 +59,13 @@ if ( ! class_exists( 'YITH_WCAN_Frontend' ) ) {
                 wp_enqueue_style( 'yith_wcan_admin', YITH_WCAN_URL . 'assets/css/frontend.css', false, $this->version );
                 wp_enqueue_script( 'yith_wcan_frontend', YITH_WCAN_URL . 'assets/js/yith-wcan-frontend' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 
-                $args = array(
+                $args = apply_filters( 'yith_wcan_ajax_frontend_classes', array(
                     'container'    => '.products',
                     'pagination'   => 'nav.woocommerce-pagination',
                     'result_count' => '.woocommerce-result-count'
+                    )
                 );
+
                 wp_localize_script( 'yith_wcan_frontend', 'yith_wcan', apply_filters( 'yith-wcan-frontend-args', $args ) );
             }
         }
@@ -99,13 +87,7 @@ if ( ! class_exists( 'YITH_WCAN_Frontend' ) ) {
                 $_chosen_attributes = array();
 
                 /* FIX TO WOOCOMMERCE 2.1 */
-                if ( function_exists( 'wc_get_attribute_taxonomies' ) ) {
-                    $attribute_taxonomies = wc_get_attribute_taxonomies();
-                }
-                else {
-                    $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
-                }
-
+                $attibute_taxonomies = function_exists( 'wc_get_attribute_taxonomies' ) ? $attribute_taxonomies = wc_get_attribute_taxonomies() :  $attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
 
                 if ( $attribute_taxonomies ) {
                     foreach ( $attribute_taxonomies as $tax ) {
