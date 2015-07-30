@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort, woocommerce ajax product filter, advanced product filters, ajax product filters, filters, woocommerce ajax product filters, woocommerce product filters, woocommerce product filters, category filter, attribute filters, woocommerce products filter, woocommerce price filter, yit, yith, yithemes
 Requires at least: 4.0
 Tested up to: 4.2.3
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ add_filter( 'yith_wcan_ajax_frontend_classes', 'yith_wcan_frontend_classes' );
 
 If you don't know which classes you should use, ask to the developer of your theme.
 
+= PAAMAYIM NEKUDOTAYIM Error after update 2.1.0 =
+
+After the update 2.1.0, some users are experiencing the error: "Parse error: syntax error, unexpected T_PAAMAYIM_NEKUDOTAYIM". This is caused by the PHP version of your server that is older than the 5.3. To solve the issue, you just have to update the plugin to the version 2.1.1.
+
 == Screenshots ==
 
 1. Admin - Appearance -> Widget: Filter Widget List Style
@@ -88,6 +92,10 @@ If you don't know which classes you should use, ask to the developer of your the
 8. Frontend: Reset button and active filters
 
 == Changelog ==
+
+= 2.1.1 =
+
+* Tweak: Support to PAAMAYIM NEKUDOTAYIM in PHP Version < 5.3
 
 = 2.1.0 =
 
@@ -202,6 +210,10 @@ If you have created your own language pack, or have an update for an existing on
 Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 == Upgrade notice ==
+
+= 2.1.1 =
+
+* Tweak: Support to PAAMAYIM NEKUDOTAYIM in PHP Version < 5.3
 
 = 2.0.0 =
 

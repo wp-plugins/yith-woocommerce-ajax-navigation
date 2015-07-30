@@ -588,7 +588,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
                         $term_id = yit_wcan_localize_terms( $term->term_id, $taxonomy );
 
-                        if ( $instance['colors'][$term_id] != '' ) {
+                        if ( ! empty( $instance['colors'][$term_id] ) ) {
                             $li_style = apply_filters( "{$args['widget_id']}-li_style", 'background-color:' . $instance['colors'][$term_id] . ';', $instance );
 
                             echo '<li ' . $class . '>';

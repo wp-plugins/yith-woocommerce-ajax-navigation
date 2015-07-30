@@ -110,17 +110,25 @@ if ( ! class_exists( 'YITH_WCAN' ) ) {
 		 * @return YITH_Vendors Main instance
 		 * @author Andrea Grillo <andrea.grillo@yithemes.com>
 		 */
-        public static function instance() {
-            $self = __CLASS__ . ( class_exists( __CLASS__ . '_Premium' ) ? '_Premium' : '' );
+		public static function instance() {
 
-            if ( is_null( $self::$_instance ) ) {
-                $self::$_instance = new $self;
+            //Premium Class
+            if( class_exists( 'YITH_WCAN_Premium' ) ){
+                if( is_null( YITH_WCAN_Premium::$_instance ) ){
+                    YITH_WCAN_Premium::$_instance = new YITH_WCAN_Premium();
+                }
+                return YITH_WCAN_Premium::$_instance;
             }
 
-            return $self::$_instance;
-        }
-
-
+            // Base Class
+            else {
+                 //Premium Class
+                if( is_null( YITH_WCAN::$_instance ) ){
+                    YITH_WCAN::$_instance = new YITH_WCAN();
+                }
+                return YITH_WCAN::$_instance;
+            }
+		}
 
         /**
          * Load required files
