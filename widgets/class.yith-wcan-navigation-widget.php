@@ -23,7 +23,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
             $widget_ops  = array( 'classname' => 'yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Filter the product list without reloading the page', 'yith_wc_ajxnav' ) );
             $control_ops = array( 'width' => 400, 'height' => 350 );
             add_action('wp_ajax_yith_wcan_select_type', array( $this, 'ajax_print_terms') );
-            parent::__construct( 'yith-woo-ajax-navigation', __( 'YITH WooCommerce Ajax Product Filter', 'yith_wc_ajxnav' ), $widget_ops, $control_ops );
+            parent::__construct( 'yith-woo-ajax-navigation', _x( 'YITH WooCommerce Ajax Product Filter', 'Admin: Widget Title', 'yith_wc_ajxnav' ), $widget_ops, $control_ops );
         }
 
 
@@ -74,8 +74,10 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
                 echo $before_widget;
 
+                $title = html_entity_decode( apply_filters( 'widget_title', $title ) );
+
                 if ( ! empty( $title ) ) {
-                    echo  $before_title . apply_filters( 'widget_title', $title ) . $after_title;
+                    echo  $before_title . $title . $after_title;
                 }
 
                 // Force found when option is selected - do not force found on taxonomy attributes
@@ -119,7 +121,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                                 $found = true;
                             }
 
-                            if ( ( $terms_type_list != 'hierarchical' || ! yit_term_has_child( $term, $taxonomy ) ) && $count == 0 && ! $option_is_set ) {
+                            if ( ( ( $terms_type_list == 'hierarchical' || ( $terms_type_list == 'tags' && $instance['display'] == 'hierarchical' ) ) || ! yit_term_has_child( $term, $taxonomy ) ) && $count == 0 && ! $option_is_set ) {
                                 continue;
                             }
 
@@ -210,7 +212,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
                         // Current Filter = this widget
                         if ( apply_filters( 'yith_wcan_list_type_current_widget_check', $check_for_current_widget, $current_filter, $display_type, $term_param ) ) {
-                            $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
+                            $class = ( ( $terms_type_list == 'hierarchical' || ( $terms_type_list == 'tags' && $instance['display'] == 'hierarchical' ) ) && yit_term_is_child( $term ) ) ? "class='{$is_chosen_class}  {$is_child_class}'" : "class='{$is_chosen_class}'";
 
                             // Remove this term is $current_filter has more than 1 term filtered
                             if ( sizeof( $current_filter ) > 1 ) {
@@ -220,7 +222,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                         }
 
                         else {
-                            $class = ( $terms_type_list == 'hierarchical' && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
+                            $class = ( ( $terms_type_list == 'hierarchical' || ( $terms_type_list == 'tags' && $instance['display'] == 'hierarchical' ) ) && yit_term_is_child( $term ) ) ? "class='{$is_child_class}'" : '';
                             $link  = add_query_arg( $arg, implode( apply_filters( 'yith_wcan_list_filter_operator', ',', $display_type ), $current_filter ), $link );
                         }
 

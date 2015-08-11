@@ -112,11 +112,12 @@ if ( ! class_exists( 'YITH_WCAN' ) ) {
 		 */
 		public static function instance() {
 
-            //Premium Class
             if( class_exists( 'YITH_WCAN_Premium' ) ){
+                //Premium Class
                 if( is_null( YITH_WCAN_Premium::$_instance ) ){
                     YITH_WCAN_Premium::$_instance = new YITH_WCAN_Premium();
                 }
+
                 return YITH_WCAN_Premium::$_instance;
             }
 
@@ -126,9 +127,12 @@ if ( ! class_exists( 'YITH_WCAN' ) ) {
                 if( is_null( YITH_WCAN::$_instance ) ){
                     YITH_WCAN::$_instance = new YITH_WCAN();
                 }
+
                 return YITH_WCAN::$_instance;
             }
 		}
+
+
 
         /**
          * Load required files

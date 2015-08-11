@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort, woocommerce ajax product filter, advanced product filters, ajax product filters, filters, woocommerce ajax product filters, woocommerce product filters, woocommerce product filters, category filter, attribute filters, woocommerce products filter, woocommerce price filter, yit, yith, yithemes
 Requires at least: 4.0
-Tested up to: 4.2.3
-Stable tag: 2.1.1
+Tested up to: 4.2.4
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,12 @@ After the update 2.1.0, some users are experiencing the error: "Parse error: syn
 8. Frontend: Reset button and active filters
 
 == Changelog ==
+
+= 2.1.2 =
+
+* Added: Support to WooCommerce 2.4
+* Updated: Plugin Framework
+* Fixed: Tag list and child term support 
 
 = 2.1.1 =
 
@@ -210,6 +216,10 @@ If you have created your own language pack, or have an update for an existing on
 Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 == Upgrade notice ==
+
+= 2.1.2 =
+
+* WooCommerce 2.4 Support
 
 = 2.1.1 =
 
