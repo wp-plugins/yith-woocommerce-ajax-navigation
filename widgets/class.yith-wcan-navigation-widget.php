@@ -901,9 +901,9 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
             $instance['attribute']  = stripslashes( $new_instance['attribute'] );
             $instance['query_type'] = stripslashes( $new_instance['query_type'] );
             $instance['type']       = stripslashes( $new_instance['type'] );
-            $instance['colors']     = $new_instance['colors'];
-            $instance['multicolor'] = $new_instance['multicolor'];
-            $instance['labels']     = $new_instance['labels'];
+            $instance['colors']     = ! empty( $new_instance['colors'] ) ? $new_instance['colors'] : array();
+            $instance['multicolor'] = ! empty( $new_instance['multicolor'] ) ? $new_instance['multicolor'] : array();
+            $instance['labels']     = ! empty( $new_instance['labels'] ) ? $new_instance['labels'] : array();
             $instance['display']    = $new_instance['display'];
 
             return $instance;

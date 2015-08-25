@@ -66,7 +66,6 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
 
             //Actions
             add_action( 'init', array( $this, 'init' ) );
-            add_action( 'wp_ajax_yith_wcan_select_type', array( $this, 'ajax_print_terms' ) );
 
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
             add_action( 'admin_menu', array( $this, 'register_panel' ), 5 );
@@ -220,33 +219,6 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
          */
         public function get_premium_landing_uri() {
             return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing . '?refer_id=1030585';
-        }
-
-        /**
-         * Print terms for the element selected
-         *
-         * @access public
-         * @return void
-         * @since 1.0.0
-         */
-        public function ajax_print_terms() {
-            $type      = $_POST['value'];
-            $attribute = $_POST['attribute'];
-            $return    = array( 'message' => '', 'content' => $_POST );
-
-            $terms = get_terms( 'pa_' . $attribute, array( 'hide_empty' => '0' ) );
-
-            $return['content'] = yith_wcan_attributes_table(
-                $type,
-                $attribute,
-                $_POST['id'],
-                $_POST['name'],
-                json_decode( $_POST['value'] ),
-                false
-            );
-
-            echo json_encode( $return );
-            die();
         }
 
         public function register_pointer() {

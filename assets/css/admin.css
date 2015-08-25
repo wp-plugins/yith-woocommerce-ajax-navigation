@@ -23,8 +23,13 @@ p.yit-wcan-display-color,
 p#yit-wcan-style,
 p#yit-wcan-show-count,
 p.yit-wcan-display-tags,
-p.yit-wcan-display-brands {
+p.yit-wcan-display-brands,
+div.yit-wcan-widget-tag-list {
     display: none;
+}
+
+div.yit-wcan-widget-tag-list.tags{
+    display: block;
 }
 
 p#yit-wcan-style.yit-wcan-style-color,

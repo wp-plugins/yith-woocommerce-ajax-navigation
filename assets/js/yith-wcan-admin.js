@@ -12,7 +12,7 @@ jQuery(function ($) {
             field_name = range_filter.data('field_name'),
             position = parseInt(input_field.data('position')) + 1,
             html = '<input type="text" placeholder="min" name="' + field_name + '[' + position + '][min]" value="" class="yith-wcan-price-filter-input widefat" data-position="' + position + '"/>' +
-                '<input type="text" placeholder="max" name="' + field_name + '[' + position + '][max]" value="" class="yith-wcan-price-filter-input widefat" data-position="' + position + '"/>';
+                   '<input type="text" placeholder="max" name="' + field_name + '[' + position + '][max]" value="" class="yith-wcan-price-filter-input widefat" data-position="' + position + '"/>';
 
         range_filter.append(html);
     };
@@ -74,15 +74,12 @@ jQuery(function ($) {
             tag_list.hide();
         }
 
-
-        $.post(ajaxurl, data, function (response) {
+       $.post(ajaxurl, data, function (response) {
             spinner.hide();
             container.html(response.content);
             $(document).trigger('yith_colorpicker');
         }, 'json');
     });
-
-    $('.yith_wcan_type').trigger('change');
 
     //color-picker
     $(document).on('yith_colorpicker',function () {
@@ -118,15 +115,4 @@ jQuery(function ($) {
         e.preventDefault();
         $(this).parents( '.yith-wcan-select-option').next('.yith_wcan_select_tag').find('.yith_wcan_tag_list_checkbox').attr( 'checked', false );
     });
-
-  /*  widget_select.on('yith_wcan_admin_widget_change', function(){
-        $('#' + widget_select.val()).show();
-    });
-
-    widget_select.on('change', function(){
-        $('.option-wrapper').hide();
-        $('#' + widget_select.val()).fadeIn();
-    });
-
-    widget_select.trigger('yith_wcan_admin_widget_change');*/
 });

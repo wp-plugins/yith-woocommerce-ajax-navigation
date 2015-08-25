@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product Filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 16:45+0100\n"
+"POT-Creation-Date: 2015-08-25 09:39+0100\n"
 "PO-Revision-Date: 2015-06-19 13:59+0100\n"
 "Last-Translator: Your Inspiration Themes <plugins@yithemes.com>\n"
 "Language-Team: \n"
@@ -21,29 +21,29 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: ../plugin-fw\n"
 
-#: includes/class.yith-wcan-admin.php:135
-#: includes/class.yith-wcan-admin.php:185
+#: includes/class.yith-wcan-admin.php:134
+#: includes/class.yith-wcan-admin.php:184
 msgid "Premium Version"
 msgstr ""
 
+#: includes/class.yith-wcan-admin.php:140
 #: includes/class.yith-wcan-admin.php:141
-#: includes/class.yith-wcan-admin.php:142
 msgid "Ajax Product Filter"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:181
+#: includes/class.yith-wcan-admin.php:180
 msgid "Premium live demo"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:181
+#: includes/class.yith-wcan-admin.php:180
 msgid "Live demo"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:209
+#: includes/class.yith-wcan-admin.php:208
 msgid "Plugin Documentation"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:262
+#: includes/class.yith-wcan-admin.php:234
 msgid ""
 "Dear users,\n"
 "                            we would like to inform you that the YITH "
@@ -60,18 +60,18 @@ msgid ""
 "translations."
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:267
+#: includes/class.yith-wcan-admin.php:239
 msgctxt "Admin(Pointers): Plugin Title"
 msgid "YITH WooCommerce Ajax Product Filter"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:269
+#: includes/class.yith-wcan-admin.php:241
 msgid ""
 "YITH WooCommerce Product Filter has been updated with new available "
 "options"
 msgstr ""
 
-#: includes/class.yith-wcan-admin.php:269
+#: includes/class.yith-wcan-admin.php:241
 msgid "discover the PREMIUM version"
 msgstr ""
 
@@ -320,7 +320,7 @@ msgstr ""
 msgid "Upload multiple files"
 msgstr ""
 
-#: plugin-fw/lib/yit-plugin-panel-wc.php:309
+#: plugin-fw/lib/yit-plugin-panel-wc.php:322
 msgid "The changes you have made will be lost if you leave this page."
 msgstr ""
 

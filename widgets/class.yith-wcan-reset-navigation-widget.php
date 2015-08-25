@@ -100,7 +100,7 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
         <?php
         }
 
-        function update( $new_instance, $old_instance ) { var_dump( $new_instance );
+        function update( $new_instance, $old_instance ) {
             $instance = $old_instance;
             $instance['title'] = strip_tags( $new_instance['title'] );
             $instance['label'] = strip_tags( $new_instance['label'] );
