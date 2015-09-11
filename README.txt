@@ -104,6 +104,7 @@ add_filter( 'yith_wcan_ajax_frontend_classes', 'yith_wcan_frontend_classes' );
 
 If you don't know which classes you should use, ask to the developer of your theme.
 
+
 **From version 2.3.0 or later:**
 
 You don't have to write manually the code anymore, as you can just go to YITH Plugin -> Ajax Product Filter -> Front End and set easily the parameters from the text fields.
