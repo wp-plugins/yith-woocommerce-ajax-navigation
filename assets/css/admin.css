@@ -184,6 +184,18 @@ input.yith-wcan-price-filter-input.widefat {
 
 input#yit_wcan_options_yith_wcan_ajax_shop_pagination,
 input#yit_wcan_options_yith_wcan_ajax_shop_container,
-input#yit_wcan_options_yith_wcan_ajax_shop_result_container {
+input#yit_wcan_options_yith_wcan_ajax_shop_result_container,
+input#yit_wcan_options_yith_wcan_ajax_widget_title_class,
+input#yit_wcan_options_yith_wcan_ajax_widget_title_tag {
     width: 230px;
+}
+
+div#yit_wcan_options_yith_wcan_custom_style-container .option {
+    width: 85%;
+}
+
+textarea#yit_wcan_options_yith_wcan_custom_style {
+    min-height: 300px;
+    padding: 8px;
+    resize: none;
 }

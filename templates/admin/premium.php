@@ -1,7 +1,3 @@
-
-
-
-
 <style>
     .section{
         margin-left: -20px;
@@ -225,10 +221,7 @@
                     <h2><?php _e('Two more layouts','yith_wc_ajxnav');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('The YITH WooCommerce Ajax product Filter widget get richer with 2 new layouts to filter the products of your shop.
-                    %1$sBicolor%2$s: the perfect choice for those attributes related to two different colors at the same time (white/black), for a simple visual impact for the final user. Pick the %1$sTag%2$s typology, on the contrary, if you want to filter your products by product tag.
-                    And if you are using also the %1$sYITH WooCommerce Brand Add-On%2$s plugin, you will be able to offer the freedom to filter your shop products by brands thanks to the ajax technology.
-                ', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('The YITH WooCommerce Ajax product Filter widget get richer with 2 new layouts to filter the products of your shop.%1$sBicolor%2$s: the perfect choice for those attributes related to two different colors at the same time (white/black), for a simple visual impact for the final user. Pick the %1$sTag%2$s typology, on the contrary, if you want to filter your products by product tag. And if you are using also the %1$sYITH WooCommerce Brand Add-On%2$s plugin, you will be able to offer the freedom to filter your shop products by brands thanks to the ajax technology.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
                 </p>
             </div>
         </div>
@@ -241,8 +234,7 @@
                     <h2><?php _e('Price range','yith_wc_ajxnav');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('One of the most requested filter for e-commerce sites is the one that let you select products by their prices.
-                    Thanks to YITH WooCommerce Ajax List Price Filter, %1$syou can set unlimited price ranges:%2$s your users will be able to filter products selecting on the ranges you have set.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('One of the most requested filter for e-commerce sites is the one that let you select products by their prices. Thanks to YITH WooCommerce Ajax List Price Filter, %1$syou can set unlimited price ranges:%2$s your users will be able to filter products selecting on the ranges you have set.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
                 </p>
             </div>
             <div class="col-1">
@@ -261,9 +253,7 @@
                     <h2><?php _e( 'Ajax Stock/On Sale Filters','yith_wc_ajxnav');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('A new widget for the premium version of the plugin.
-                    Whoever will surf the pages of your shop will be able to display only the products on sale and/or the available ones.%3$s
-                    %1$sAn additional feature for an e-commerce site that is worthy!%2$s', 'yith_wc_ajxnav'), '<b>', '</b>','<br>');?>
+                    <?php echo sprintf(__('A new widget for the premium version of the plugin. Whoever will surf the pages of your shop will be able to display only the products on sale and/or the available ones.%3$s %1$sAn additional feature for an e-commerce site that is worthy!%2$s', 'yith_wc_ajxnav'), '<b>', '</b>','<br>');?>
                 </p>
             </div>
         </div>
@@ -276,8 +266,7 @@
                     <h2><?php _e('Product sorting','yith_wc_ajxnav');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('With the new %1$sYITH WooCommerce Ajax Sort By%2$s widget, you can give your users the freedom to sort products with the ajax technology,
-                    without the need to reload the page. Products can be sorted by rate, sales, price or publication date.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('With the new %1$sYITH WooCommerce Ajax Sort By%2$s widget, you can give your users the freedom to sort products with the ajax technology, without the need to reload the page. Products can be sorted by rate, sales, price or publication date.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
                 </p>
             </div>
             <div class="col-1">
@@ -296,7 +285,7 @@
                     <h2><?php _e('Customized loader','yith_wc_ajxnav');?></h2>
                 </div>
                 <p>
-                    <?php _e('From the plugin option panel, you can choose to upload a new icon for your loader: in this way, it will better meet your needs.','') ?>
+                    <?php _e('From the plugin option panel, you can choose to upload a new icon for your loader: in this way, it will better meet your needs.','yith_wc_ajxnav') ?>
                 </p>
             </div>
         </div>

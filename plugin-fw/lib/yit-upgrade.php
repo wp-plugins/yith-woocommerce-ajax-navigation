@@ -134,7 +134,8 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
                 $update_url[ $init ]    = wp_nonce_url( self_admin_url('update.php?action=upgrade-plugin-multisite&plugin=') . $init, 'upgrade-plugin-multisite_' . $init );
                 $changelog_id           = str_replace( array( '/', '.php', '.' ), array( '-', '', '-' ), $init );
                 $details_url[ $init ]   = '#TB_inline' . esc_url( add_query_arg( array( 'width' => 722, 'height' => 914, 'inlineId' => $changelog_id ) , '' ) );
-                $changelogs[ $init ]    = $this->in_theme_update_message( $this->_plugins[ $init ], $this->_plugins[ $init ]['info']['changelog'], $changelog_id, false );
+                $plugin_changelog       = isset( $this->_plugins[ $init ]['info']['changelog'] ) ? $this->_plugins[ $init ]['info']['changelog'] : '';
+                $changelogs[ $init ]    = $this->in_theme_update_message( $this->_plugins[ $init ], $plugin_changelog, $changelog_id, false );
             }
 
             $localize_script_args = array(

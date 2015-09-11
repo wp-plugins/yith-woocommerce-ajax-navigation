@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: woocommerce ajax product filter download, woocommerce, widget, ajax, ajax filtered nav, ajax navigation, ajax filtered navigation, woocommerce layered navigation, woocommerce layered nav, product filter, product filters, ajax product filter, woocommerce ajax product filter, woocommerce filters, sidebar filter, sidebar ajax filter, ajax price filter, price filter, product sorting, woocommerce filter, taxonomy filter, attribute filter, attributes filter, woocommerce product sort, ajax sort, woocommerce ajax product filter, advanced product filters, ajax product filters, filters, woocommerce ajax product filters, woocommerce product filters, woocommerce product filters, category filter, attribute filters, woocommerce products filter, woocommerce price filter, yit, yith, yithemes
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,7 +82,10 @@ After renaming the files, you can update/translate the .po file following the cl
 = The page doesn't update after clicking on a WooCommerce filter =
 
 The issue could be related to the fact you are using a non-standard template for a WooCommerce shop page. To solve it, you should ask to the theme's author to use WooCommerce standard HTML classes. 
-As an alternative, you can use this piece of code in functions.php file of your theme:
+As an alternative:
+**For version prior to 2.2.0:** 
+
+you can use this piece of code in functions.php file of your theme:
 
 `
 if( ! function_exists( 'yith_wcan_frontend_classes' ) ){
@@ -98,6 +101,12 @@ if( ! function_exists( 'yith_wcan_frontend_classes' ) ){
 
 add_filter( 'yith_wcan_ajax_frontend_classes', 'yith_wcan_frontend_classes' );
 `
+
+If you don't know which classes you should use, ask to the developer of your theme.
+
+**From version 2.3.0 or later:**
+
+You don't have to write manually the code anymore, as you can just go to YITH Plugin -> Ajax Product Filter -> Front End and set easily the parameters from the text fields.
 
 If you don't know which classes you should use, ask to the developer of your theme.
 
@@ -141,8 +150,17 @@ If you want to see a demonstration version of the premium plugin, you can see it
 6. Frontend: WooCommerce Widget in sidebar
 7. Frontend: Dropdown style
 8. Frontend: Reset button and active filters
+9. Admin: YIT Plugins -> Ajax Product Filter -> Front end
+10. Admin: YIT Plugins -> Ajax Product Filter -> Custom Style
 
 == Changelog ==
+
+= 2.3.0 =
+
+* Added: Custom Style Section
+* Added: New frontend options for script configuration
+* Updated: Plugin Core Framework
+* Updated: Languages file
 
 = 2.2.0 =
 
@@ -271,9 +289,13 @@ If you have created your own language pack, or have an update for an existing on
 
 == Documentation ==
 
-Full documentation for YITH WooCommerce Ajax Product Filter is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
+Full documentation is available [here](http://yithemes.com/docs-plugins/yith_woocommerce_ajax_navigation/).
 
 == Upgrade notice ==
+
+= 2.2.0 =
+
+* WordPress 4.3 Support
 
 = 2.1.2 =
 

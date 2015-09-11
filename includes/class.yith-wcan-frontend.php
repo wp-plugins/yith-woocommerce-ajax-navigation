@@ -56,17 +56,21 @@ if ( ! class_exists( 'YITH_WCAN_Frontend' ) ) {
             if ( yith_wcan_can_be_displayed() ) {
                 $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-                wp_enqueue_style( 'yith_wcan_admin', YITH_WCAN_URL . 'assets/css/frontend.css', false, $this->version );
-                wp_enqueue_script( 'yith_wcan_frontend', YITH_WCAN_URL . 'assets/js/yith-wcan-frontend' . $suffix . '.js', array( 'jquery' ), $this->version, true );
+                wp_enqueue_style( 'yith-wcan-frontend', YITH_WCAN_URL . 'assets/css/frontend.css', false, $this->version );
+                wp_enqueue_script( 'yith-wcan-script', YITH_WCAN_URL . 'assets/js/yith-wcan-frontend' . $suffix . '.js', array( 'jquery' ), $this->version, true );
+
+                $custom_style = yith_wcan_get_option( 'yith_wcan_custom_style', '' );
+
+                ! empty( $custom_style ) && wp_add_inline_style( 'yith-wcan-frontend', sanitize_text_field( $custom_style ) );
 
                 $args = apply_filters( 'yith_wcan_ajax_frontend_classes', array(
-                    'container'    => '.products',
-                    'pagination'   => 'nav.woocommerce-pagination',
-                    'result_count' => '.woocommerce-result-count'
+                        'container'             => yith_wcan_get_option( 'yith_wcan_ajax_shop_container', '.products' ),
+                        'pagination'            => yith_wcan_get_option( 'yith_wcan_ajax_shop_pagination', 'nav.woocommerce-pagination' ),
+                        'result_count'          => yith_wcan_get_option( 'yith_wcan_ajax_shop_result_container', '.woocommerce-result-count' ),
                     )
                 );
 
-                wp_localize_script( 'yith_wcan_frontend', 'yith_wcan', apply_filters( 'yith-wcan-frontend-args', $args ) );
+                wp_localize_script( 'yith-wcan-script', 'yith_wcan', apply_filters( 'yith-wcan-frontend-args', $args ) );
             }
         }
 

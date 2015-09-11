@@ -66,11 +66,13 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
 
             //Actions
             add_action( 'init', array( $this, 'init' ) );
-
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
-            add_action( 'admin_menu', array( $this, 'register_panel' ), 5 );
 
+            /* Plugin Option Panel */
+            add_action( 'admin_menu', array( $this, 'register_panel' ), 5 );
+            add_action( 'yit_panel_wcan_description', array( $this, 'frontend_description_option' ), 10, 3 );
             add_action( 'yith_wcan_premium_tab', array( $this, 'premium_tab' ) );
+            add_action( 'yith_wcan_custom_style_tab', array( $this, 'custom_style_tab' ) );
 
             /* Plugin Informations */
             add_filter( 'plugin_action_links_' . plugin_basename( YITH_WCAN_DIR . '/' . basename( YITH_WCAN_FILE ) ), array( $this, 'action_links' ) );
@@ -78,7 +80,6 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
 
             /* Add WordPress Pointer */
             add_action( 'admin_init', array( $this, 'register_pointer' ) );
-
 
             // YITH WCAN Loaded
             do_action( 'yith_wcan_loaded' );
@@ -113,6 +114,13 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
                 wp_enqueue_script( 'wp-color-picker' );
                 wp_enqueue_script( 'yith_wcan_admin', YITH_WCAN_URL . 'assets/js/yith-wcan-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version, true );
             }
+
+            if( 'admin.php' == $pagenow && isset( $_GET['page'] ) && 'yith_wcan_panel' == $_GET['page'] && isset( $_GET['tab'] ) && 'custom-style' == $_GET['tab'] ){
+                wp_enqueue_style( 'codemirror-style', YITH_WCAN_URL . 'assets/3rd-party/codemirror/lib/codemirror.css', array( 'yit-plugin-style' ) );
+                wp_enqueue_script( 'codemirror-script', YITH_WCAN_URL . 'assets/3rd-party/codemirror/lib/codemirror.js', array( 'jquery' ), false, true );
+                wp_enqueue_script( 'codemirror-script-css', YITH_WCAN_URL . 'assets/3rd-party/codemirror/mode/css/css.js', array( 'codemirror-script' ), false, true );
+                wp_enqueue_script( 'yith-wcan-codemirror-init', YITH_WCAN_URL . 'assets/js/yith-wcan-editor.js', array( 'jquery' ), $this->version, true );
+            }
         }
 
         /**
@@ -131,7 +139,9 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
             }
 
             $admin_tabs = array(
-                'premium' => __( 'Premium Version', 'yith_wc_ajxnav' )
+                'frontend'      => __( 'Front end', 'yith_wc_ajxnav' ),
+                'custom-style'  => __( 'Custom Style', 'yith_wc_ajxnav' ),
+                'premium'       => __( 'Premium Version', 'yith_wc_ajxnav' )
             );
 
             $args = array(
@@ -156,9 +166,31 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
             $this->_panel = new YIT_Plugin_Panel( $args );
             $this->_main_panel_option = "yit_{$args['parent']}_options";
 
+            $this->save_default_options();
+
             do_action( 'yith_wcan_after_option_panel', $args );
         }
 
+ 		/**
+         * Add default option to panel
+         *
+         * @return   void
+         * @since    1.0
+         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         * @use     /Yit_Plugin_Panel class
+         * @see      plugin-fw/lib/yit-plugin-panel.php
+         */
+		public function save_default_options(){
+            $options = get_option( $this->_main_panel_option );
+            if( $options === false ){
+                add_option( $this->_main_panel_option, $this->_panel->get_default_options());
+            }
+        }
+
+
+        /**
+         * Premium Tab
+         */
         public function premium_tab() {
             require_once( YITH_WCAN_DIR . 'templates/admin/premium.php' );
         }
@@ -221,6 +253,9 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
             return defined( 'YITH_REFER_ID' ) ? $this->_premium_landing . '?refer_id=' . YITH_REFER_ID : $this->_premium_landing . '?refer_id=1030585';
         }
 
+        /**
+         * Add WP Pointer
+         */
         public function register_pointer() {
 
             if( defined( 'YITH_WCAN_PREMIUM' ) && YITH_WCAN_PREMIUM ){
@@ -257,6 +292,28 @@ if ( ! class_exists( 'YITH_WCAN_Admin' ) ) {
             }
 
             YIT_Pointers()->register( $args );
+        }
+
+        /**
+         * Add the frontend tab description
+         *
+         * @param $option
+         * @param $db_value
+         * @param $custom_attributes
+         *
+         * @return  string The description text
+         * @since    2.0.0
+         * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+         */
+        public function frontend_description_option( $option, $db_value, $custom_attributes  ){
+            echo "<p>{$option['desc']}</p>";
+        }
+
+        /**
+         * Custom Style tab
+         */
+        public function custom_style_tab(){
+            require_once( YITH_WCAN_DIR . 'templates/admin/editor.php' );
         }
     }
 }
