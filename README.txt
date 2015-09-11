@@ -52,9 +52,9 @@ YITH WooCommerce Ajax Product Filter is available in combination with many other
 
 YITH WooCommerce Ajax Product Filter has been tested and compatibility is certain with the following WooCommerce plugins that you can add to your site:
 
-* [YITH WooCommerce Multi Vendor](https://wordpress.org/plugins/yith-woocommerce-product-vendors/)
-* [YITH WooCommerce Brands Add-On](https://wordpress.org/plugins/yith-woocommerce-brands-add-on/)
-* [YITH Product Size Charts for WooCommerce](https://wordpress.org/plugins/yith-product-size-charts-for-woocommerce/)
+* [YITH WooCommerce Multi Vendor](https://wordpress.org/plugins/yith-woocommerce-product-vendors)
+* [YITH WooCommerce Brands Add-On](https://wordpress.org/plugins/yith-woocommerce-brands-add-on)
+* [YITH Product Size Charts for WooCommerce](https://wordpress.org/plugins/yith-product-size-charts-for-woocommerce)
 
 Nevertheless, it could be compatible with many other WooCommerce plugins that have not been tested yet. If you want to inform us about compatibility with other plugins, please, [email to us](mailto:plugins@yithemes.com "Your Inspiration Themes").
 
@@ -83,6 +83,7 @@ After renaming the files, you can update/translate the .po file following the cl
 
 The issue could be related to the fact you are using a non-standard template for a WooCommerce shop page. To solve it, you should ask to the theme's author to use WooCommerce standard HTML classes. 
 As an alternative:
+
 **For version prior to 2.2.0:** 
 
 you can use this piece of code in functions.php file of your theme:
@@ -103,7 +104,6 @@ add_filter( 'yith_wcan_ajax_frontend_classes', 'yith_wcan_frontend_classes' );
 `
 
 If you don't know which classes you should use, ask to the developer of your theme.
-
 
 **From version 2.3.0 or later:**
 
