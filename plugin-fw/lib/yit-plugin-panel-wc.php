@@ -282,7 +282,8 @@ if ( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
 
                 do_action( 'yit_panel_wc_after_update' );
 
-            } elseif( isset( $_REQUEST['yit-action'] ) && $_REQUEST['yit-action'] == 'wc-options-reset' ){
+            } elseif( isset( $_REQUEST['yit-action'] ) && $_REQUEST['yit-action'] == 'wc-options-reset'
+                && isset( $_POST['yith_wc_reset_options_nonce'] ) && wp_verify_nonce( $_POST['yith_wc_reset_options_nonce'], 'yith_wc_reset_options_'.$this->settings['page'] )){
 
                 $yit_options = $this->get_main_array_options();
                 $current_tab = $this->get_current_tab();

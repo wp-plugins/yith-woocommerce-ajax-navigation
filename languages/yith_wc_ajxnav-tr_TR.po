@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-11 16:48+0100\n"
-"PO-Revision-Date: 2015-09-11 16:48+0100\n"
+"POT-Creation-Date: 2015-09-17 14:37+0100\n"
+"PO-Revision-Date: 2015-09-17 14:37+0100\n"
 "Last-Translator: Caner Öncel <caneroncel@gmail.com>\n"
 "Language-Team: Caner Öncel <caneroncel@gmail.com>\n"
 "Language: tr\n"
@@ -326,7 +326,7 @@ msgstr ""
 msgid "Upload multiple files"
 msgstr ""
 
-#: plugin-fw/lib/yit-plugin-panel-wc.php:322
+#: plugin-fw/lib/yit-plugin-panel-wc.php:323
 msgid "The changes you have made will be lost if you leave this page."
 msgstr ""
 
@@ -358,7 +358,7 @@ msgstr ""
 
 #: plugin-fw/lib/yit-plugin-panel.php:298
 #: plugin-fw/lib/yit-plugin-subpanel.php:148
-#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:10
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:11
 msgid "Are you sure?"
 msgstr ""
 
@@ -1050,7 +1050,7 @@ msgstr "İtalik"
 msgid "Italic bold"
 msgstr "İtalik kalın"
 
-#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:10
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:11
 msgid "Reset Defaults"
 msgstr ""
 

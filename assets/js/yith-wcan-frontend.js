@@ -161,7 +161,6 @@ jQuery(function ($) {
                     $('.yit-wcan-container').html($(response).find('.woocommerce-info'));
                 }
 
-
                 //pagination
                 if ($(response).find(yith_wcan.pagination).length > 0) {
                     //se non esiste lo creo
@@ -172,6 +171,10 @@ jQuery(function ($) {
                     $(yith_wcan.pagination)
                         .html($(response).find(yith_wcan.pagination).html())
                         .show();
+                }
+
+                else {
+                    $(yith_wcan.pagination).empty();
                 }
 
                 //result count

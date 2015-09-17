@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product Filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-11 16:48+0100\n"
-"PO-Revision-Date: 2015-09-11 16:48+0100\n"
+"POT-Creation-Date: 2015-09-17 14:37+0100\n"
+"PO-Revision-Date: 2015-09-17 14:37+0100\n"
 "Last-Translator: Your Inspiration Themes <plugins@yithemes.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -26,7 +26,7 @@ msgstr "Front end"
 
 #: includes/class.yith-wcan-admin.php:143 settings/custom-style-options.php:12
 msgid "Custom Style"
-msgstr ""
+msgstr "Modifica stile"
 
 #: includes/class.yith-wcan-admin.php:144
 #: includes/class.yith-wcan-admin.php:216
@@ -131,7 +131,7 @@ msgstr ""
 
 #: settings/custom-style-options.php:24
 msgid "Put here your custom CSS rules:"
-msgstr ""
+msgstr "Metti qui le tue modifiche delle regole del CSS"
 
 #: settings/frontend-options.php:12
 msgid "General Settings"

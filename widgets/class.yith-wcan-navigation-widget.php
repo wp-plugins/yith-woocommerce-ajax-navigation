@@ -761,7 +761,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
                         $term_id = yit_wcan_localize_terms( $term->term_id, $taxonomy );
 
-                        if ( $instance['labels'][$term_id] != '' ) {
+                        if ( ! empty( $instance['labels'][$term_id] ) ) {
 
                             echo '<li ' . $class . '>';
 
