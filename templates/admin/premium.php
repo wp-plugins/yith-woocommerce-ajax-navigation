@@ -200,17 +200,17 @@
         <div class="landing-container">
             <div class="premium-cta">
                 <p>
-                    <?php echo sprintf( __('Upgrade to %1$spremium version%2$s of %1$sYITH WooCommerce Ajax Product Filter%2$s to benefit from all features!','yith_wc_ajxnav'),'<span class="highlight">','</span>' );?>
+                    <?php echo sprintf( __('Upgrade to %1$spremium version%2$s of %1$sYITH WooCommerce Ajax Product Filter%2$s to benefit from all features!','yith-woocommerce-ajax-navigation'),'<span class="highlight">','</span>' );?>
                 </p>
                 <a href="<?php echo $this->get_premium_landing_uri() ?>" target="_blank" class="premium-cta-button button btn">
-                    <span class="highlight"><?php _e('UPGRADE','yith_wc_ajxnav');?></span>
-                    <span><?php _e('to the premium version','yith_wc_ajxnav');?></span>
+                    <span class="highlight"><?php _e('UPGRADE','yith-woocommerce-ajax-navigation');?></span>
+                    <span><?php _e('to the premium version','yith-woocommerce-ajax-navigation');?></span>
                 </a>
             </div>
         </div>
     </div>
     <div class="section section-even clear" style="background: url(<?php echo YITH_WCAN_URL ?>assets/images/01-bg.png) no-repeat #fff; background-position: 85% 75%">
-        <h1><?php _e('Premium Features','yith_wc_ajxnav');?></h1>
+        <h1><?php _e('Premium Features','yith-woocommerce-ajax-navigation');?></h1>
         <div class="landing-container">
             <div class="col-1">
                 <img src="<?php echo YITH_WCAN_URL ?>assets/images/01.png" alt="layouts" />
@@ -218,10 +218,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL ?>assets/images/01-icon.png" alt="icon 01"/>
-                    <h2><?php _e('Two more layouts','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e('Two more layouts','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('The YITH WooCommerce Ajax product Filter widget get richer with 2 new layouts to filter the products of your shop.%1$sBicolor%2$s: the perfect choice for those attributes related to two different colors at the same time (white/black), for a simple visual impact for the final user. Pick the %1$sTag%2$s typology, on the contrary, if you want to filter your products by product tag. And if you are using also the %1$sYITH WooCommerce Brand Add-On%2$s plugin, you will be able to offer the freedom to filter your shop products by brands thanks to the ajax technology.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('The YITH WooCommerce Ajax product Filter widget get richer with 2 new layouts to filter the products of your shop.%1$sBicolor%2$s: the perfect choice for those attributes related to two different colors at the same time (white/black), for a simple visual impact for the final user. Pick the %1$sTag%2$s typology, on the contrary, if you want to filter your products by product tag. And if you are using also the %1$sYITH WooCommerce Brand Add-On%2$s plugin, you will be able to offer the freedom to filter your shop products by brands thanks to the ajax technology.', 'yith-woocommerce-ajax-navigation'), '<b>', '</b>');?>
                 </p>
             </div>
         </div>
@@ -231,10 +231,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL ?>assets/images/02-icon.png" alt="icon 02" />
-                    <h2><?php _e('Price range','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e('Price range','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('One of the most requested filter for e-commerce sites is the one that let you select products by their prices. Thanks to YITH WooCommerce Ajax List Price Filter, %1$syou can set unlimited price ranges:%2$s your users will be able to filter products selecting on the ranges you have set.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('One of the most requested filter for e-commerce sites is the one that let you select products by their prices. Thanks to YITH WooCommerce Ajax List Price Filter, %1$syou can set unlimited price ranges:%2$s your users will be able to filter products selecting on the ranges you have set.', 'yith-woocommerce-ajax-navigation'), '<b>', '</b>');?>
                 </p>
             </div>
             <div class="col-1">
@@ -250,10 +250,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL ?>assets/images/03-icon.png" alt="icon 03" />
-                    <h2><?php _e( 'Ajax Stock/On Sale Filters','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e( 'Ajax Stock/On Sale Filters','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('A new widget for the premium version of the plugin. Whoever will surf the pages of your shop will be able to display only the products on sale and/or the available ones.%3$s %1$sAn additional feature for an e-commerce site that is worthy!%2$s', 'yith_wc_ajxnav'), '<b>', '</b>','<br>');?>
+                    <?php echo sprintf(__('A new widget for the premium version of the plugin. Whoever will surf the pages of your shop will be able to display only the products on sale and/or the available ones.%3$s %1$sAn additional feature for an e-commerce site that is worthy!%2$s', 'yith-woocommerce-ajax-navigation'), '<b>', '</b>','<br>');?>
                 </p>
             </div>
         </div>
@@ -263,10 +263,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL ?>assets/images/04-icon.png" alt="icon 04" />
-                    <h2><?php _e('Product sorting','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e('Product sorting','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php echo sprintf(__('With the new %1$sYITH WooCommerce Ajax Sort By%2$s widget, you can give your users the freedom to sort products with the ajax technology, without the need to reload the page. Products can be sorted by rate, sales, price or publication date.', 'yith_wc_ajxnav'), '<b>', '</b>');?>
+                    <?php echo sprintf(__('With the new %1$sYITH WooCommerce Ajax Sort By%2$s widget, you can give your users the freedom to sort products with the ajax technology, without the need to reload the page. Products can be sorted by rate, sales, price or publication date.', 'yith-woocommerce-ajax-navigation'), '<b>', '</b>');?>
                 </p>
             </div>
             <div class="col-1">
@@ -282,10 +282,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL?>assets/images/05-icon.png" alt="icon 05" />
-                    <h2><?php _e('Customized loader','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e('Customized loader','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php _e('From the plugin option panel, you can choose to upload a new icon for your loader: in this way, it will better meet your needs.','yith_wc_ajxnav') ?>
+                    <?php _e('From the plugin option panel, you can choose to upload a new icon for your loader: in this way, it will better meet your needs.','yith-woocommerce-ajax-navigation') ?>
                 </p>
             </div>
         </div>
@@ -295,10 +295,10 @@
             <div class="col-2">
                 <div class="section-title">
                     <img src="<?php echo YITH_WCAN_URL ?>assets/images/06-icon.png" alt="icon 06" />
-                    <h2><?php _e('WooCommerce Price Filter','yith_wc_ajxnav');?></h2>
+                    <h2><?php _e('WooCommerce Price Filter','yith-woocommerce-ajax-navigation');?></h2>
                 </div>
                 <p>
-                    <?php echo _e('With the premium version of the plugin, you will also be able to customize WooCommerce Price Filter widget, changing the settings you can find in the plugin option panel.', 'yith_wc_ajxnav');?>
+                    <?php echo _e('With the premium version of the plugin, you will also be able to customize WooCommerce Price Filter widget, changing the settings you can find in the plugin option panel.', 'yith-woocommerce-ajax-navigation');?>
                 </p>
             </div>
             <div class="col-1">
@@ -310,11 +310,11 @@
         <div class="landing-container">
             <div class="premium-cta">
                 <p>
-                    <?php echo sprintf( __('Upgrade to %1$spremium version%2$s of %1$sYITH WooCommerce Ajax Product Filter%2$s to benefit from all features!','yith_wc_ajxnav'),'<span class="highlight">','</span>' );?>
+                    <?php echo sprintf( __('Upgrade to %1$spremium version%2$s of %1$sYITH WooCommerce Ajax Product Filter%2$s to benefit from all features!','yith-woocommerce-ajax-navigation'),'<span class="highlight">','</span>' );?>
                 </p>
                 <a href="<?php echo $this->get_premium_landing_uri() ?>" target="_blank" class="premium-cta-button button btn">
-                    <span class="highlight"><?php _e('UPGRADE','yith_wc_ajxnav');?></span>
-                    <span><?php _e('to the premium version','yith_wc_ajxnav');?></span>
+                    <span class="highlight"><?php _e('UPGRADE','yith-woocommerce-ajax-navigation');?></span>
+                    <span><?php _e('to the premium version','yith-woocommerce-ajax-navigation');?></span>
                 </a>
             </div>
         </div>

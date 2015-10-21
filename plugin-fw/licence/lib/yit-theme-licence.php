@@ -71,9 +71,7 @@ if ( ! class_exists( 'YIT_Theme_Licence' ) ) {
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
             add_action( 'admin_enqueue_scripts', array( $this, 'localize_script' ), 15 );
             add_action( "wp_ajax_activate-{$this->_product_type}", array( $this, 'activate' ) );
-            add_action( "wp_ajax_nopriv_activate-{$this->_product_type}", array( $this, 'activate' ) );
             add_action( "wp_ajax_update_licence_information-{$this->_product_type}", array( $this, 'update_licence_information' ) );
-            add_action( "wp_ajax_nopriv_update_licence_information-{$this->_product_type}", array( $this, 'update_licence_information' ) );
         }
 
         /**

@@ -199,3 +199,9 @@ textarea#yit_wcan_options_yith_wcan_custom_style {
     padding: 8px;
     resize: none;
 }
+
+div#yit_wcan_options_yith_wcan_seo_value-container .option,
+div#yit_wcan_options_yith_wcan_seo_value-container .option .select_wrapper,
+#yit_wcan_options_yith_wcan_seo_option-container .select_wrapper {
+    width: auto;
+}

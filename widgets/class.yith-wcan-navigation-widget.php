@@ -20,21 +20,20 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
     class YITH_WCAN_Navigation_Widget extends WP_Widget {
 
         function __construct() {
-            $widget_ops  = array( 'classname' => 'yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Filter the product list without reloading the page', 'yith_wc_ajxnav' ) );
+            $widget_ops  = array( 'classname' => 'yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Filter the product list without reloading the page', 'yith-woocommerce-ajax-navigation' ) );
             $control_ops = array( 'width' => 400, 'height' => 350 );
             add_action('wp_ajax_yith_wcan_select_type', array( $this, 'ajax_print_terms') );
-            parent::__construct( 'yith-woo-ajax-navigation', _x( 'YITH WooCommerce Ajax Product Filter', 'Admin: Widget Title', 'yith_wc_ajxnav' ), $widget_ops, $control_ops );
+            parent::__construct( 'yith-woo-ajax-navigation', _x( 'YITH WooCommerce Ajax Product Filter', 'Admin: Widget Title', 'yith-woocommerce-ajax-navigation' ), $widget_ops, $control_ops );
         }
 
 
         function widget( $args, $instance ) {
-            global $_chosen_attributes, $woocommerce, $_attributes_array;
+            global $_chosen_attributes, $woocommerce;
 
             extract( $args );
+            $_attributes_array = yit_wcan_get_product_taxonomy();
 
-            $attributes_array = ! empty( $_attributes_array ) ? $_attributes_array : array();
-
-            if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, apply_filters( 'yith_wcan_product_taxonomy_type', array( 'product_cat', 'product_tag' ) ) ) ) ) {
+            if ( ! is_post_type_archive( 'product' ) && ! is_tax( $_attributes_array ) ) {
                 return;
             }
 
@@ -156,7 +155,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term_param;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -168,7 +167,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -261,7 +260,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
                 }
                 elseif ( $display_type == 'select' ) {
-                    $dropdown_label = __( 'Filters:', 'yith_wc_ajxnav' );
+                    $dropdown_label = __( 'Filters:', 'yith-woocommerce-ajax-navigation' );
                     ?>
 
                     <a class="yit-wcan-select-open" href="#"><?php echo apply_filters( 'yith_wcan_dropdown_default_label', $dropdown_label ) ?></a>
@@ -335,7 +334,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -347,7 +346,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -505,7 +504,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -517,7 +516,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -673,7 +672,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -685,7 +684,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -809,23 +808,23 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
             $instance = wp_parse_args( (array) $instance, $defaults );
 
             $widget_types = apply_filters( 'yith_wcan_widget_types', array(
-                    'list'   => __( 'List', 'yith_wc_ajxnav' ),
-                    'color'  => __( 'Color', 'yith_wc_ajxnav' ),
-                    'label'  => __( 'Label', 'yith_wc_ajxnav' ),
-                    'select' => __( 'Dropdown', 'yith_wc_ajxnav' )
+                    'list'   => __( 'List', 'yith-woocommerce-ajax-navigation' ),
+                    'color'  => __( 'Color', 'yith-woocommerce-ajax-navigation' ),
+                    'label'  => __( 'Label', 'yith-woocommerce-ajax-navigation' ),
+                    'select' => __( 'Dropdown', 'yith-woocommerce-ajax-navigation' )
                 )
             );
             ?>
 
             <p>
                 <label>
-                    <strong><?php _e( 'Title', 'yith_wc_ajxnav' ) ?>:</strong><br />
+                    <strong><?php _e( 'Title', 'yith-woocommerce-ajax-navigation' ) ?>:</strong><br />
                     <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
                 </label>
             </p>
 
             <p>
-                <label for="<?php echo $this->get_field_id( 'type' ); ?>"><strong><?php _e( 'Type:', 'yith_wc_ajxnav' ) ?></strong></label>
+                <label for="<?php echo $this->get_field_id( 'type' ); ?>"><strong><?php _e( 'Type:', 'yith-woocommerce-ajax-navigation' ) ?></strong></label>
                 <select class="yith_wcan_type widefat" id="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'type' ) ); ?>">
                     <?php foreach ( $widget_types as $type => $label ) : ?>
                         <option value="<?php echo $type ?>" <?php selected( $type, $instance['type'] ) ?>><?php echo $label ?></option>
@@ -836,25 +835,25 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
             <?php do_action( 'yith_wcan_after_widget_type' );  ?>
 
             <p>
-                <label for="<?php echo $this->get_field_id( 'query_type' ); ?>"><?php _e( 'Query Type:', 'yith_wc_ajxnav' ) ?></label>
+                <label for="<?php echo $this->get_field_id( 'query_type' ); ?>"><?php _e( 'Query Type:', 'yith-woocommerce-ajax-navigation' ) ?></label>
                 <select id="<?php echo esc_attr( $this->get_field_id( 'query_type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'query_type' ) ); ?>">
-                    <option value="and" <?php selected( $instance['query_type'], 'and' ); ?>><?php _e( 'AND', 'yith_wc_ajxnav' ); ?></option>
-                    <option value="or" <?php selected( $instance['query_type'], 'or' ); ?>><?php _e( 'OR', 'yith_wc_ajxnav' ); ?></option>
+                    <option value="and" <?php selected( $instance['query_type'], 'and' ); ?>><?php _e( 'AND', 'yith-woocommerce-ajax-navigation' ); ?></option>
+                    <option value="or" <?php selected( $instance['query_type'], 'or' ); ?>><?php _e( 'OR', 'yith-woocommerce-ajax-navigation' ); ?></option>
                 </select></p>
 
             <p class="yith-wcan-attribute-list" style="display: <?php echo $instance['type'] == 'tags' || $instance['type'] == 'brands' ? 'none' : 'block' ?>;">
-                <label for="<?php echo $this->get_field_id( 'attribute' ); ?>"><strong><?php _e( 'Attribute:', 'yith_wc_ajxnav' ) ?></strong></label>
+                <label for="<?php echo $this->get_field_id( 'attribute' ); ?>"><strong><?php _e( 'Attribute:', 'yith-woocommerce-ajax-navigation' ) ?></strong></label>
                 <select class="yith_wcan_attributes widefat" id="<?php echo esc_attr( $this->get_field_id( 'attribute' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'attribute' ) ); ?>">
                     <?php yith_wcan_dropdown_attributes( $instance['attribute'] ); ?>
                 </select>
             </p>
 
             <p id="yit-wcan-display" class="yit-wcan-display-<?php echo $instance['type'] ?>">
-                <label for="<?php echo $this->get_field_id( 'display' ); ?>"><strong><?php _e( 'Display (default All):', 'yith_wc_ajxnav' ) ?></strong></label>
+                <label for="<?php echo $this->get_field_id( 'display' ); ?>"><strong><?php _e( 'Display (default All):', 'yith-woocommerce-ajax-navigation' ) ?></strong></label>
                 <select class="yith_wcan_type widefat" id="<?php echo esc_attr( $this->get_field_id( 'display' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display' ) ); ?>">
-                    <option value="all"          <?php selected( 'all', $instance['display'] ) ?>>          <?php _e( 'All (no hierarchical)', 'yith_wc_ajxnav' ) ?></option>
-                    <option value="hierarchical" <?php selected( 'hierarchical', $instance['display'] ) ?>> <?php _e( 'All (hierarchical)', 'yith_wc_ajxnav' ) ?>   </option>
-                    <option value="parent"       <?php selected( 'parent', $instance['display'] ) ?>>       <?php _e( 'Only Parent', 'yith_wc_ajxnav' ) ?>        </option>
+                    <option value="all"          <?php selected( 'all', $instance['display'] ) ?>>          <?php _e( 'All (no hierarchical)', 'yith-woocommerce-ajax-navigation' ) ?></option>
+                    <option value="hierarchical" <?php selected( 'hierarchical', $instance['display'] ) ?>> <?php _e( 'All (hierarchical)', 'yith-woocommerce-ajax-navigation' ) ?>   </option>
+                    <option value="parent"       <?php selected( 'parent', $instance['display'] ) ?>>       <?php _e( 'Only Parent', 'yith-woocommerce-ajax-navigation' ) ?>        </option>
                 </select>
             </p>
 

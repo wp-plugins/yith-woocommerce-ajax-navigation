@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Ajax Product filter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 14:37+0100\n"
-"PO-Revision-Date: 2015-09-17 14:37+0100\n"
+"POT-Creation-Date: 2015-09-25 10:01+0100\n"
+"PO-Revision-Date: 2015-09-25 10:01+0100\n"
 "Last-Translator: Caner Öncel <caneroncel@gmail.com>\n"
 "Language-Team: Caner Öncel <caneroncel@gmail.com>\n"
 "Language: tr\n"
@@ -241,7 +241,8 @@ msgid "Type"
 msgstr ""
 
 #: plugin-fw/lib/yit-cpt-unlimited.php:1052
-msgid "Layout for this "
+#, php-format
+msgid "Layout for this %s"
 msgstr ""
 
 #: plugin-fw/lib/yit-cpt-unlimited.php:1058

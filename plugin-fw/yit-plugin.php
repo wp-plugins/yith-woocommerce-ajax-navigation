@@ -13,22 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 
-if( !defined('YIT_CORE_PLUGIN')) {
-    define( 'YIT_CORE_PLUGIN', true);
-}
-
-if( !defined('YIT_CORE_PLUGIN_PATH')) {
-    define( 'YIT_CORE_PLUGIN_PATH', dirname(__FILE__));
-}
-
-if( !defined('YIT_CORE_PLUGIN_URL')) {
-    define( 'YIT_CORE_PLUGIN_URL', untrailingslashit( plugins_url( '/', __FILE__ ) ));
-}
-
-if( ! defined( 'YIT_CORE_PLUGIN_TEMPLATE_PATH' ) ){
-    define ( 'YIT_CORE_PLUGIN_TEMPLATE_PATH', YIT_CORE_PLUGIN_PATH .  '/templates' );
-}
-
+! defined( 'YIT_CORE_PLUGIN' )                  && define( 'YIT_CORE_PLUGIN', true);
+! defined( 'YIT_CORE_PLUGIN_PATH' )             && define( 'YIT_CORE_PLUGIN_PATH', dirname(__FILE__) );
+! defined( 'YIT_CORE_PLUGIN_URL' )              && define( 'YIT_CORE_PLUGIN_URL', untrailingslashit( plugins_url( '/', __FILE__ ) ) );
+! defined( 'YIT_CORE_PLUGIN_TEMPLATE_PATH' )    && define( 'YIT_CORE_PLUGIN_TEMPLATE_PATH', YIT_CORE_PLUGIN_PATH .  '/templates' );
 
 include_once( 'yit-functions.php' );
 include_once( 'yit-plugin-registration-hook.php' );

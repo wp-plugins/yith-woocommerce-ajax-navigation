@@ -3,7 +3,7 @@
  * Plugin Name: YITH WooCommerce Ajax Product Filter
  * Plugin URI: http://yithemes.com/
  * Description: YITH WooCommerce Ajax Product Filter offers the perfect way to filter all the products of your shop.
- * Version: 2.3.1
+ * Version: 2.5.0
  * Author: yithemes
  * Author URI: http://yithemes.com/
  * Text Domain: yith_wc_ajxnav
@@ -43,7 +43,7 @@ if( ! function_exists( 'install_premium_woocommerce_admin_notice' ) ) {
      */
     function install_premium_woocommerce_admin_notice() { ?>
         <div class="error">
-            <p><?php _e( 'YITH WooCommerce Ajax Product Filter is enabled but not effective. It requires WooCommerce in order to work.', 'yith_wc_ajxnav' ); ?></p>
+            <p><?php _e( 'YITH WooCommerce Ajax Product Filter is enabled but not effective. It requires WooCommerce in order to work.', 'yith-woocommerce-ajax-navigation' ); ?></p>
         </div>
         <?php
     }
@@ -55,7 +55,7 @@ if ( ! function_exists( 'WC' ) ) {
     return;
 }
 
-load_plugin_textdomain( 'yith_wc_ajxnav', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+load_plugin_textdomain( 'yith-woocommerce-ajax-navigation', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 //Stop activation if the premium version of the same plugin is still active
 if ( defined( 'YITH_WCAN_VERSION' ) ) {
@@ -65,10 +65,13 @@ if ( defined( 'YITH_WCAN_VERSION' ) ) {
 ! defined( 'YITH_WCAN' )            && define( 'YITH_WCAN', true );
 ! defined( 'YITH_WCAN_URL' )        && define( 'YITH_WCAN_URL', plugin_dir_url( __FILE__ ) );
 ! defined( 'YITH_WCAN_DIR' )        && define( 'YITH_WCAN_DIR', plugin_dir_path( __FILE__ ) );
-! defined( 'YITH_WCAN_VERSION' )    && define( 'YITH_WCAN_VERSION', '2.3.1' );
+! defined( 'YITH_WCAN_VERSION' )    && define( 'YITH_WCAN_VERSION', '2.5.0' );
 ! defined( 'YITH_WCAN_FREE_INIT')   && define( 'YITH_WCAN_FREE_INIT', plugin_basename( __FILE__ ) );
 ! defined( 'YITH_WCAN_FILE' )       && define( 'YITH_WCAN_FILE', __FILE__ );
 
+/* Plugin Framework Version Check */
+! function_exists( 'yit_maybe_plugin_fw_loader' ) && require_once( YITH_WCAN_DIR . 'plugin-fw/init.php' );
+yit_maybe_plugin_fw_loader( YITH_WCAN_DIR  );
 
 /**
  * Init default plugin settings

@@ -165,6 +165,12 @@
                 var attachment = custom_uploader.state().get( 'selection' ).first().toJSON();
 
                 $("#" + id).val( attachment.url );
+                //  Save the id of the selected element to an element which name is the same with
+                // a suffix "-yith-attachment-id"
+                if ($("#" + id + "-yith-attachment-id")) {
+                    $("#" + id + "-yith-attachment-id").val(attachment.id);
+                }
+
                 $('.plugin-option .upload_img_url').trigger('change');
             });
 

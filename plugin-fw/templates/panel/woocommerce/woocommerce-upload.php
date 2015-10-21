@@ -16,10 +16,10 @@
  * @since      1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
-
+$hidden_val = get_option($id . "-yith-attachment-id", 0);
 
 ?>
 
@@ -29,18 +29,25 @@ if ( ! defined( 'ABSPATH' ) ) {
     </th>
     <td class="forminp forminp-color plugin-option">
 
-        <div id="<?php echo $id ?>-container" class="yit_options rm_option rm_input rm_text rm_upload" <?php if ( isset( $option['deps'] ) ): ?>data-field="<?php echo $id ?>" data-dep="<?php echo $this->get_id_field( $option['deps']['ids'] ) ?>" data-value="<?php echo $option['deps']['values'] ?>" <?php endif ?>>
+        <div id="<?php echo $id ?>-container" class="yit_options rm_option rm_input rm_text rm_upload"
+             <?php if (isset($option['deps'])): ?>data-field="<?php echo $id ?>"
+             data-dep="<?php echo $this->get_id_field($option['deps']['ids']) ?>"
+             data-value="<?php echo $option['deps']['values'] ?>" <?php endif ?>>
             <div class="option">
-                <input type="text" name="<?php echo $id ?>" id="<?php echo $id ?>" value="<?php echo $value == '1' ? '' : esc_attr( $value ) ?>" class="upload_img_url" />
-                <input type="button" value="<?php _e( 'Upload', 'yith-plugin-fw' ) ?>" id="<?php echo $id ?>-button" class="upload_button button" />
+                <input type="text" name="<?php echo $id ?>" id="<?php echo $id ?>"
+                       value="<?php echo $value == '1' ? '' : esc_attr($value) ?>" class="upload_img_url"/>
+                <input type="hidden" name="<?php echo $id ?>-yith-attachment-id" id="<?php echo $id ?>-yith-attachment-id" value="<?php echo $hidden_val; ?>" />
+                <input type="button" value="<?php _e('Upload', 'yith-plugin-fw') ?>" id="<?php echo $id ?>-button"
+                       class="upload_button button"/>
             </div>
             <div class="clear"></div>
             <span class="description"><?php echo $desc ?></span>
+
             <div class="upload_img_preview" style="margin-top:10px;">
                 <?php
                 $file = $value;
-                if ( preg_match( '/(jpg|jpeg|png|gif|ico)$/', $file ) ) {
-                    echo "<img src=\"" . YIT_CORE_PLUGIN_URL. "/assets/images/sleep.png\" data-src=\"$file\" />";
+                if (preg_match('/(jpg|jpeg|png|gif|ico)$/', $file)) {
+                    echo "<img src=\"" . YIT_CORE_PLUGIN_URL . "/assets/images/sleep.png\" data-src=\"$file\" />";
                 }
                 ?>
             </div>

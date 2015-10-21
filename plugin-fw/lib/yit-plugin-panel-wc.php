@@ -278,6 +278,20 @@ if ( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
                     }
                 }
 
+                foreach($_POST as $name => $value) {
+
+                    //  Check if current POST var which name ends with a specific needle
+                    $attachment_id_needle = "-yith-attachment-id";
+                    $is_hidden_input = (($temp = strlen($name) - strlen($attachment_id_needle)) >= 0 && strpos($name, $attachment_id_needle, $temp) !== FALSE);
+                    if ($is_hidden_input){
+                        //  Is an input element of type "hidden" coupled with an input element for selecting an element from the media gallery
+                        $yit_options[ $current_tab ][$name] = array(
+                            "type" => "text",
+                            "id" => $name
+                        );
+                    }
+                }
+                
                 woocommerce_update_options( $yit_options[ $current_tab ] );
 
                 do_action( 'yit_panel_wc_after_update' );
@@ -313,7 +327,6 @@ if ( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
             wp_enqueue_style( 'woocommerce_admin_styles', $woocommerce->plugin_url() . '/assets/css/admin.css', array(), $woocommerce->version );
             wp_enqueue_style( 'yit-plugin-style', YIT_CORE_PLUGIN_URL . '/assets/css/yit-plugin-panel.css', $woocommerce->version );
             wp_enqueue_style ( 'wp-jquery-ui-dialog' );
-
 
             wp_enqueue_style( 'jquery-chosen', YIT_CORE_PLUGIN_URL . '/assets/css/chosen/chosen.css' );
             wp_enqueue_script( 'jquery-chosen', YIT_CORE_PLUGIN_URL . '/assets/js/chosen/chosen.jquery.js', array( 'jquery' ), '1.1.0', true );
@@ -365,8 +378,8 @@ if ( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @return array Filtered body classes
          */
         public function admin_body_class( $admin_body_classes ){
-            $admin_body_classes .= ' woocommerce ';
-            return $admin_body_classes;
+            global $pagenow;
+            return 'admin.php' == $pagenow && substr_count( $admin_body_classes, 'woocommerce' ) == 0 ? $admin_body_classes .= ' woocommerce ' : $admin_body_classes;
         }
 
         /**

@@ -48,7 +48,7 @@ if ( ! class_exists( 'YIT_Licence' ) ) {
          * @var string The yithemes api uri
          * @since 1.0
          */
-        protected $_api_uri = 'http://www.yithemes.com';
+        protected $_api_uri = 'http://yithemes.com';
 
         /**
          * @var string The yithemes api uri query args

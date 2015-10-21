@@ -20,20 +20,20 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
     class YITH_WCAN_Reset_Navigation_Widget extends WP_Widget {
 
         function __construct() {
-            $widget_ops  = array( 'classname' => 'yith-woo-ajax-reset-navigation yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Reset all filters set by YITH WooCommerce Ajax Product Filter', 'yith_wc_ajxnav' ) );
+            $widget_ops  = array( 'classname' => 'yith-woo-ajax-reset-navigation yith-woo-ajax-navigation woocommerce widget_layered_nav', 'description' => __( 'Reset all filters set by YITH WooCommerce Ajax Product Filter', 'yith-woocommerce-ajax-navigation' ) );
             $control_ops = array( 'width' => 400, 'height' => 350 );
-            parent::__construct( 'yith-woo-ajax-reset-navigation', __( 'YITH WooCommerce Ajax Reset Filter', 'yith_wc_ajxnav' ), $widget_ops, $control_ops );
+            parent::__construct( 'yith-woo-ajax-reset-navigation', __( 'YITH WooCommerce Ajax Reset Filter', 'yith-woocommerce-ajax-navigation' ), $widget_ops, $control_ops );
         }
 
 
         function widget( $args, $instance ) {
-            global $_chosen_attributes, $woocommerce, $_attributes_array;
+            global $_chosen_attributes, $woocommerce;
 
             extract( $args );
 
-            $attributes_array = ! empty( $_attributes_array ) ? $_attributes_array : array();
+            $_attributes_array = yit_wcan_get_product_taxonomy();
 
-            if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, apply_filters( 'yith_wcan_product_taxonomy_type', array( 'product_cat', 'product_tag' ) ) ) ) ) {
+            if ( ! is_post_type_archive( 'product' ) && ! is_tax( $_attributes_array ) ) {
                 return;
             }
 
@@ -63,7 +63,7 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
                     echo $before_title . $title . $after_title;
                 }
                 $button_class = apply_filters( 'yith-wcan-reset-navigation-button-class', "yith-wcan-reset-navigation button" );
-                echo "<div class='yith-wcan'><a class='{$button_class}' href='{$link}'>" . __( $label, 'yith_wc_ajxnav' ) . "</a></div>";
+                echo "<div class='yith-wcan'><a class='{$button_class}' href='{$link}'>" . __( $label, 'yith-woocommerce-ajax-navigation' ) . "</a></div>";
                 echo $after_widget;
                 echo ob_get_clean();
             }
@@ -79,20 +79,20 @@ if ( ! class_exists( 'YITH_WCAN_Reset_Navigation_Widget' ) ) {
 
             $defaults = array(
                 'title' => '',
-                'label' => __( 'Reset All Filters', 'yith_wc_ajxnav' )
+                'label' => __( 'Reset All Filters', 'yith-woocommerce-ajax-navigation' )
             );
 
             $instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
             <p>
                 <label>
-                    <strong><?php _e( 'Title', 'yith_wc_ajxnav' ) ?>:</strong><br />
+                    <strong><?php _e( 'Title', 'yith-woocommerce-ajax-navigation' ) ?>:</strong><br />
                     <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
                 </label>
             </p>
             <p>
                 <label>
-                    <strong><?php _e( 'Button Label', 'yith_wc_ajxnav' ) ?>:</strong><br />
+                    <strong><?php _e( 'Button Label', 'yith-woocommerce-ajax-navigation' ) ?>:</strong><br />
                     <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'label' ); ?>" name="<?php echo $this->get_field_name( 'label' ); ?>" value="<?php echo $instance['label']; ?>" />
                 </label>
             </p>

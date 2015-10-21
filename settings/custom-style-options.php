@@ -9,7 +9,7 @@ $custom_style = array(
             array( 'type' => 'open' ),
 
             array(
-                'name' => __( 'Custom Style', 'yith_wc_ajxnav' ),
+                'name' => __( 'Custom Style', 'yith-woocommerce-ajax-navigation' ),
                 'type' => 'title'
             ),
 
@@ -21,7 +21,7 @@ $custom_style = array(
             array( 'type' => 'open' ),
 
             array(
-                'name' => __( 'Put here your custom CSS rules:', 'yith_wc_ajxnav' ),
+                'name' => __( 'Put here your custom CSS rules:', 'yith-woocommerce-ajax-navigation' ),
                 'desc' => '',
                 'id'   => 'yith_wcan_custom_style',
                 'type' => 'textarea',

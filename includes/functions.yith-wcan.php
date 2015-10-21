@@ -54,7 +54,7 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
 
     elseif ( 'color' == $type ) {
         if ( ! empty( $terms ) ) {
-            $return = sprintf( '<table><tr><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith_wc_ajxnav' ), __( 'Color', 'yith_wc_ajxnav' ) );
+            $return = sprintf( '<table><tr><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith-woocommerce-ajax-navigation' ), __( 'Color', 'yith-woocommerce-ajax-navigation' ) );
 
             foreach ( $terms as $term ) {
                 $return .= "<tr><td><label for='{$id}{$term->term_id}'>{$term->name}</label></td><td><input type='text' id='{$id}{$term->term_id}' name='{$name}[colors][{$term->term_id}]' value='" . ( isset( $values[$term->term_id] ) ? $values[$term->term_id] : '' ) . "' size='3' class='yith-colorpicker' /></td></tr>";
@@ -68,7 +68,7 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
 
     elseif ( 'multicolor' == $type ) {
         if ( ! empty( $terms ) ) {
-            $return = sprintf( '<table class="yith-wcan-multicolor"><tr><th>%s</th><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith_wc_ajxnav' ), _x( 'Color 1', 'For multicolor: I.E. white and red T-Shirt', 'yith_wc_ajxnav' ), _x( 'Color 2', 'For multicolor: I.E. white and red T-Shirt', 'yith_wc_ajxnav' ) );
+            $return = sprintf( '<table class="yith-wcan-multicolor"><tr><th>%s</th><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith-woocommerce-ajax-navigation' ), _x( 'Color 1', 'For multicolor: I.E. white and red T-Shirt', 'yith-woocommerce-ajax-navigation' ), _x( 'Color 2', 'For multicolor: I.E. white and red T-Shirt', 'yith-woocommerce-ajax-navigation' ) );
 
             foreach ( $terms as $term ) {
 
@@ -90,7 +90,7 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
 
     elseif ( 'label' == $type ) {
         if ( ! empty( $terms ) ) {
-            $return = sprintf( '<table><tr><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith_wc_ajxnav' ), __( 'Labels', 'yith_wc_ajxnav' ) );
+            $return = sprintf( '<table><tr><th>%s</th><th>%s</th></tr>', __( 'Term', 'yith-woocommerce-ajax-navigation' ), __( 'Labels', 'yith-woocommerce-ajax-navigation' ) );
 
             foreach ( $terms as $term ) {
                 $return .= "<tr><td><label for='{$id}{$term->term_id}'>{$term->name}</label></td><td><input type='text' id='{$id}{$term->term_id}' name='{$name}[labels][{$term->term_id}]' value='" . ( isset( $values[$term->term_id] ) ? $values[$term->term_id] : '' ) . "' size='3' /></td></tr>";
@@ -118,7 +118,12 @@ function yith_wcan_attributes_table( $type, $attribute, $id, $name, $values = ar
 function yith_wcan_can_be_displayed() {
     global $woocommerce, $_attributes_array;
 
-    if ( is_active_widget( false, false, 'yith-woo-ajax-navigation', true ) ) {
+    if (
+        is_active_widget( false, false, 'yith-woo-ajax-navigation', true ) ||
+        is_active_widget( false, false, 'yith-woo-ajax-navigation-sort-by', true ) ||
+        is_active_widget( false, false, 'yith-woo-ajax-navigation-stock-on-sale', true ) ||
+        is_active_widget( false, false, 'yith-woo-ajax-navigation-list-price-filter', true )
+    ) {
         return true;
     }
     else {
@@ -436,16 +441,19 @@ if ( ! function_exists( 'yit_get_woocommerce_layered_nav_link' ) ) {
      */
     function yit_get_woocommerce_layered_nav_link() {
 
-        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
-            return untrailingslashit( get_post_type_archive_link( 'product' ) );
+        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
+            $return = get_post_type_archive_link( 'product' );
+            return apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $return ) : $return;
         }
 
         elseif ( is_product_category() ) {
-            return untrailingslashit( get_term_link( get_queried_object()->slug, 'product_cat' ) );
+            $return = get_term_link( get_queried_object()->slug, 'product_cat' );
+            return apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $return ) : $return;
         }
 
         else {
-            return untrailingslashit( get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) );
+            $return = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+            return apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $return ) : $return;
         }
 
         return false;
@@ -473,6 +481,23 @@ if ( ! function_exists( 'yit_wcan_localize_terms' ) ) {
         }
 
         return $term_id;
+    }
+
+}
+
+if ( ! function_exists( 'yit_wcan_get_product_taxonomy' ) ) {
+    /**
+     * Get the product taxonomy array
+     * @return array product taxonomy array
+     *
+     * @since    2.2
+     * @author   Andrea Grillo <andrea.grillo@yithemes.com>
+     */
+
+    function yit_wcan_get_product_taxonomy() {
+        global $_attributes_array;
+        $product_taxonomies = ! empty( $_attributes_array ) ? $_attributes_array : get_object_taxonomies( 'product' );
+        return array_merge( $product_taxonomies, apply_filters( 'yith_wcan_product_taxonomy_type', array() ) );
     }
 
 }

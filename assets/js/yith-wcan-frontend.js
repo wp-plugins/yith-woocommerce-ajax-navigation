@@ -141,6 +141,7 @@ jQuery(function ($) {
 
         //loading
         $(yith_wcan.container).html('').addClass('yith-wcan-loading');
+        $(document).trigger("yith-wcan-ajax-loading");
 
         if (typeof yith_wcan_frontend != 'undefined') {
             $(yith_wcan.container).css('backgroundImage', 'url(' + yith_wcan_frontend.loader_url + ')');
